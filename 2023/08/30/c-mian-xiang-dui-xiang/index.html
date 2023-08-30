@@ -575,7 +575,7 @@
                 <h2 id="C-面向对象"><a href="#C-面向对象" class="headerlink" title="C++面向对象"></a>C++面向对象</h2><p>public 共有成员<br>谁都可以访问(使用/调用)<br>protected保护成员<br>只有自己和子类可以访问<br>private 私有成员<br>只有自己（类内部）可以访问<br>成员访问<br>访问限定符仅作用于类，因此同一个类的不同对象，可以相互访问非共有部分。<br>类和结构体区别<br>在C++中，类和结构没有本质区别，唯一不同在于<br>类的默认访问控制属性为private<br>结构的默认访问控制属性为public<br>封装<br>对不同成员的控制访问属性加以区分，体现了C++作为面向对象语言的封装特性</p>
 <h3 id="在栈中创建对象"><a href="#在栈中创建对象" class="headerlink" title="在栈中创建对象"></a>在栈中创建对象</h3><p>在栈中创建一个对象<br>格式: 类名 对象名<br>People people;<br>在栈中创建多个对象<br>类名 对象数组名[元素个数]</p>
 <h3 id="在堆中创建对象"><a href="#在堆中创建对象" class="headerlink" title="在堆中创建对象"></a>在堆中创建对象</h3><p>在堆中创建单个对象</p>
-<p>类名 *指针名 = new 类名<br>People *sirius = new People;<br>在堆中创建多个对象<br>类名 *对象数组指针名 = new 类名[元素个数]<br><img src="/././img/1686015643781.png"></p>
+<p>类名 *指针名 = new 类名<br>People *sirius = new People;<br>在堆中创建多个对象<br>类名 *对象数组指针名 = new 类名[元素个数]<br><img src="/./img/1686015643781.png"></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 using namespace std;
 class dog
@@ -620,7 +620,7 @@ int main()
 
 <p>输出结果为</p>
 <p>我是堆区的对象<br>吃饭跑步睡觉<br>我是栈区的对象<br>吃饭跑步睡觉</p>
-<p><img src="/././img/1686015729660.png"></p>
+<p><img src="/./img/1686015729660.png"></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 using namespace std;
 class student
@@ -715,12 +715,12 @@ int main()
 
 <p>输出结果为</p>
 <p>我是构造函数20<br>我是常成员函数</p>
-<h3 id="拷贝构造函数（复制构造函数）"><a href="#拷贝构造函数（复制构造函数）" class="headerlink" title="拷贝构造函数（复制构造函数）"></a>拷贝构造函数（复制构造函数）</h3><p><img src="/././img/1686376068957.png"></p>
+<h3 id="拷贝构造函数（复制构造函数）"><a href="#拷贝构造函数（复制构造函数）" class="headerlink" title="拷贝构造函数（复制构造函数）"></a>拷贝构造函数（复制构造函数）</h3><p><img src="/./img/1686376068957.png"></p>
 <p>同构造函数一样，如果用户不提供拷贝构造函数，编译器提供默认拷贝构造函数。<br><strong>注意：因为拷贝构造函数属于构造函数，有的编译器会在用户提供构造函数的时候也不再提供拷贝构造。</strong></p>
 <h4 id="浅拷贝（复制地址）"><a href="#浅拷贝（复制地址）" class="headerlink" title="浅拷贝（复制地址）"></a>浅拷贝（复制地址）</h4><p>浅拷贝就是对内存地址的复制，让目标对象指针和源对象指向同一片内存空间，<strong>当内存销毁的时候，指向这片内存的几个指针需要重新定义才可以使用，要不然会成为野指针。</strong></p>
-<p><img src="/././img/1686397072070.png"></p>
+<p><img src="/./img/1686397072070.png"></p>
 <h4 id="深拷贝（复制内存）"><a href="#深拷贝（复制内存）" class="headerlink" title="深拷贝（复制内存）"></a>深拷贝（复制内存）</h4><p>深拷贝是指拷贝对象的具体内容，而内存地址是自主分配的。<strong>拷贝结束之后，两个对象虽然存的值是相同的，但是内存地址不一样，两个对象也互不影响，互不干涉。</strong></p>
-<p><img src="/././img/1686397184821.png"></p>
+<p><img src="/./img/1686397184821.png"></p>
 <pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
 using namespace std;
 class Test
