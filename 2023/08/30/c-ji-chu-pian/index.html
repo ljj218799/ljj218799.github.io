@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JVM垃圾回收, Welcome to my blog">
+    <meta name="keywords" content="C++基本篇, Welcome to my blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JVM垃圾回收 | Welcome to my blog</title>
+    <title>C++基本篇 | Welcome to my blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -398,12 +398,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JVM垃圾回收</h1>
+                    <h1 class="description center-align post-title">C++基本篇</h1>
                 </div>
             </div>
         </div>
@@ -519,12 +519,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
-                            <a href="/tags/jvm/">
-                                <span class="chip bg-color">jvm</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
                             </a>
                         
                     </div>
@@ -535,8 +531,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E2%80%93-Java/" class="post-category">
-                                – Java
+                            <a href="/categories/%E2%80%93-C/" class="post-category">
+                                – C++
                             </a>
                         
                     </div>
@@ -572,256 +568,186 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="三、垃圾回收"><a href="#三、垃圾回收" class="headerlink" title="三、垃圾回收"></a>三、垃圾回收</h1><h2 id="1-如何判断对象可以回收"><a href="#1-如何判断对象可以回收" class="headerlink" title="1.如何判断对象可以回收"></a>1.如何判断对象可以回收</h2><h4 id="1-1-引用计数器"><a href="#1-1-引用计数器" class="headerlink" title="1.1.引用计数器"></a>1.1.引用计数器</h4><h5 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h5><ul>
-<li>垃圾回收引用计数法（Reference Counting Garbage Collection）是一种常用的垃圾回收算法，它的基本思想是对每个对象记录它的引用计数，当引用计数为0时，就可以将这个对象回收掉。</li>
-</ul>
-<h5 id="2-基本原理"><a href="#2-基本原理" class="headerlink" title="2.基本原理"></a>2.基本原理</h5><ul>
-<li>为每个对象维护一个引用计数器，记录当前有多少个指针引用了这个对象。</li>
-<li>当有一个指针指向了这个对象时，引用计数器加1；当有一个指针不再引用这个对象时，引用计数器减1。</li>
-<li>当引用计数器为0时，说明这个对象已经没有任何指针引用它了，可以将这个对象回收掉。</li>
-</ul>
-<h5 id="3-优缺点"><a href="#3-优缺点" class="headerlink" title="3.优缺点"></a>3.优缺点</h5><p><strong>优点</strong></p>
-<p>​		可以实现快速的内存回收，因为它不需要遍历整个堆内存，只需要回收引用计数为0的对象即可。</p>
-<p><strong>缺点</strong></p>
-<p>​		实现比较复杂，需要为每个对象维护引用计数器，而且容易出现循环引用的问题，导致内存泄漏。</p>
-<p><img src="/./img/6.5.png"></p>
-<p>​		<strong>循环引用指的是两个或多个对象之间相互引用，形成了一个闭环，如果这些对象的引用计数都不为0，那么它们将永远无法被回收，从而导致内存泄漏。</strong></p>
-<h4 id="1-2-可达性分析算法"><a href="#1-2-可达性分析算法" class="headerlink" title="1.2.可达性分析算法"></a>1.2.可达性分析算法</h4><h5 id="1-定义-1"><a href="#1-定义-1" class="headerlink" title="1.定义"></a>1.定义</h5><p>​		可达性分析算法（Reachability Analysis Algorithm）是现代垃圾回收算法中最常用的一种。它的基本思想是从一组根对象开始，通过<strong>遍历对象之间的引用关系</strong>，找到所有可以被访问到的对象，并将这些对象标记为存<strong>活对象</strong>。所有未被标记的对象则可以被视为<strong>垃圾对象</strong>，可以被回收</p>
-<h5 id="2-基本流程"><a href="#2-基本流程" class="headerlink" title="2.基本流程"></a>2.基本流程</h5><ol>
-<li><p>从一组根对象(gc_roots)开始，例如Java虚拟机中的堆栈、静态变量等。</p>
-</li>
-<li><p>遍历所有根对象能够访问到的对象，将这些对象标记为存活对象。</p>
-</li>
-<li><p>遍历所有已标记的存活对象，找到它们所引用的对象，将这些对象也标记为存活对象。</p>
-</li>
-<li><p>重复步骤3，直到所有可达对象都被标记为存活对象。</p>
-</li>
-<li><p>将未被标记的对象作为垃圾对象，进行回收。</p>
-<p><strong>根对象(gc_roots)的查看（MAT工具）</strong></p>
-<p><img src="/./img/6.6.png"></p>
-</li>
-</ol>
-<h4 id="1-3-四种引用"><a href="#1-3-四种引用" class="headerlink" title="1.3.四种引用"></a>1.3.四种引用</h4><p><img src="/./img/6.7.png"></p>
-<h5 id="1-强引用"><a href="#1-强引用" class="headerlink" title="1.强引用"></a>1.强引用</h5><ul>
-<li>强引用是最常见的引用类型</li>
-<li>只有所有GC Roots对象都不通过【强引用】引用该对象，该对象才能被垃圾回收</li>
-<li>通过<strong>new关键字创建一个对象</strong>，该对象具有强引用。</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>C++学习（进阶加基础）</p>
+<p>本文笔记链接</p>
+<h2 id="C-基础"><a href="#C-基础" class="headerlink" title="C++基础"></a>C++基础</h2><h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><p>C++有自己的头文件，例如iostream 没有.h<br>也可以用C的头文件 例如stdio.h 有.h<br>或者将C文件C++化 例如<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=cstdio&amp;spm=1001.2101.3001.7020">cstdio</a> 前面加c没有.h</p>
+<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>1.划分逻辑单元。避免名字冲突，</p>
+<p>2.同名的命名空间可以合并，有时候一个名字空间太冗余或者其他原因需要分开实现在不同地方，</p>
+<p>3.声明和定义分开，在命名空间中声明的函数，定义时要加：：作用域限定符。</p>
+<p>4.命名空间可以嵌套，调用时则用a：：b：：要调用的对象。</p>
+<p>5.using namespace 名字空间名<br>使用后该名字空间对于当前作用域可见，可以不再使用作用域限定符，一旦使用，不可再隐藏。<br>std名字空间全局可见。std标准库定义名字空间。</p>
+<h3 id="：：作用域限定符"><a href="#：：作用域限定符" class="headerlink" title="：：作用域限定符"></a>：：作用域限定符</h3><p>表示：：后面的内容属于：：前面。翻译成中文就是 的<br>如果：：前面没有内容表示全局</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+namespace a
+{
+    char name = 'a';
+    void eat()
+    {
+        cout &lt;&lt; "吃饭" &lt;&lt; endl;
+    }
+}
+namespace b
+{
+    char name = 'a';
+    void eat()
+    {
+        cout &lt;&lt; "喝水" &lt;&lt; endl;
+    }
+}
+int main()
+{
+    a::eat();
+    b::eat();
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>输出结果</p>
+<p>吃饭<br>喝水</p>
+<h3 id="bool类型"><a href="#bool类型" class="headerlink" title="bool类型"></a>bool类型</h3><ul>
+<li>true表示真 单字节整数1</li>
+<li>false表示假 单字节整数0</li>
+</ul>
+<p>boolalpha bool类型使用字符输出<br>noboolalpha bool关闭字符输出，数值输出</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+using namespace std<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
 
+    bool b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> boolalpha <span class="token operator">&lt;&lt;</span> <span class="token string">"字符输出"</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> endl
+         <span class="token operator">&lt;&lt;</span> noboolalpha <span class="token operator">&lt;&lt;</span> <span class="token string">"数值输出"</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> endl
+         <span class="token operator">&lt;&lt;</span> <span class="token string">"内存大小"</span> <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="2-软引用"><a href="#2-软引用" class="headerlink" title="2.软引用"></a>2.软引用</h5><ul>
-<li>软引用是一种相对强引用弱化了一些的引用类型。</li>
-<li>仅有软引用引用该对象时，在垃圾回收后，<strong>内存仍不足时</strong>会再次出发垃圾回收，回收软引用对象</li>
-<li>可以配合引用队列来释放软引用自身</li>
-<li>常用于<strong>缓存对象，例如，图片缓存、数据缓存</strong>等。</li>
+<p>输出结果为</p>
+<p>字符输出true<br>数值输出1<br>内存大小1</p>
+<h3 id="内联"><a href="#内联" class="headerlink" title="内联"></a>内联</h3><ul>
+<li>用函数已被编译好的二进制代码，替换对该函数的调用指令。提高效率，避免函数调用开销。</li>
+<li><strong>使用inline关键字期望该函数被优化为内联，是否内联由编译器决定</strong>。</li>
+<li>内联会使可执行文件内存变大，只有频繁调用的简单函数适合内联。复杂函数和递归函数都不适合内联。</li>
 </ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token class-name">SoftReference</span><span class="token operator">&lt;</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;&gt;</span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">SoftReference</span><span class="token operator">&lt;</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> softRef <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SoftReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-
-<h5 id="3-弱引用"><a href="#3-弱引用" class="headerlink" title="3.弱引用"></a>3.弱引用</h5><ul>
-<li>弱引用比软引用还要弱化一些。</li>
-<li>仅有弱引用引用该对象时，在垃圾回收时，<strong>无论内存是否充足</strong>，都会回收弱引用对象</li>
-<li>可以配合引用队列来释放弱引用自身</li>
-<li>常用于<strong>ThreadLocal、WeakHashMap</strong>等</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token class-name">WeakReference</span><span class="token operator">&lt;</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;&gt;</span> weakRef <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">WeakReference</span><span class="token operator">&lt;</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> softRef <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-
-<h5 id="4-虚引用"><a href="#4-虚引用" class="headerlink" title="4.虚引用"></a>4.虚引用</h5><ul>
-<li><p>虚引用是最弱化的引用类型。</p>
-</li>
-<li><p>如果一个对象只具有虚引用，那么无法通过虚引用获取到该对象，也无法通过虚引用对该对象进行任何操作。</p>
-</li>
-<li><p>虚引用主要用于在对象被回收时收到一个系统通知，例如，当一个对象被回收时，可以在虚引用的引用队列中收到通知。</p>
-</li>
-<li><p>必须配合引用队列使用，主要配合 <strong>ByteBuffer</strong>使用，被引用对象回收时，会将虚引用入队，由<strong>Reference Handler</strong>线程调用虚引用相关方法释放直接内存</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Object</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">ReferenceQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> referenceQueue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReferenceQueue</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">PhantomReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> phantomRef <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PhantomReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> referenceQueue<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<h5 id="5-终结器引用"><a href="#5-终结器引用" class="headerlink" title="5.终结器引用"></a>5.终结器引用</h5><ul>
-<li>终结器引用是一种特殊的引用类型，用于在对象被回收之前执行特定的清理操作。</li>
-<li>无需手动编码，但其内部配合引用队列使用</li>
-<li>终结器引用入队（被引用对象暂时没有被回收)，再由<strong>Finalizer线程</strong>通过终结器引用找到被引用对象并调用它的<strong>finalize方法</strong>，第二次GC时才能回收被引用对象</li>
-</ul>
-<h2 id="2-垃圾回收算法"><a href="#2-垃圾回收算法" class="headerlink" title="2.垃圾回收算法"></a>2.垃圾回收算法</h2><h4 id="2-1-标记清除"><a href="#2-1-标记清除" class="headerlink" title="2.1.标记清除"></a>2.1.标记清除</h4><h5 id="1-定义-2"><a href="#1-定义-2" class="headerlink" title="1.定义"></a>1.定义</h5><p>标记清除（Mark and Sweep）是一种垃圾回收算法，用于自动内存管理。</p>
-<h5 id="2-作用"><a href="#2-作用" class="headerlink" title="2.作用"></a>2.作用</h5><p>该算法分为两个阶段：标记和清除。</p>
-<ul>
-<li>在标记阶段，垃圾回收器遍历程序中的所有对象，并标记那些仍然被程序使用的对象。</li>
-<li>在清除阶段，垃圾回收器清除未被标记的对象，释放它们占用的内存。</li>
-</ul>
-<p><img src="/./img/7.1.png"></p>
-<h5 id="3-优缺点-1"><a href="#3-优缺点-1" class="headerlink" title="3.优缺点"></a>3.优缺点</h5><ul>
-<li>优点：可以处理循环引用的情况，即当两个或多个对象相互引用时，它们之间的引用关系会被正确地识别和处理。</li>
-<li>缺点：清除内存的过程可能会导致内存碎片化。</li>
-</ul>
-<h4 id="2-2-标记整理"><a href="#2-2-标记整理" class="headerlink" title="2.2.标记整理"></a>2.2.标记整理</h4><h5 id="1-定义-3"><a href="#1-定义-3" class="headerlink" title="1.定义"></a>1.定义</h5><p>标记整理（Mark and Compact）是标记清除算法的改进版本，在标记和清除阶段之后，还会对内存进行<strong>整理</strong>，以解决标记清除算法可能导致的内存碎片化问题。</p>
-<h5 id="2-作用-1"><a href="#2-作用-1" class="headerlink" title="2.作用"></a>2.作用</h5><p>算法也分为两个阶段：标记和整理。</p>
-<ul>
-<li>在标记阶段，垃圾回收器遍历程序中的所有对象，并标记那些仍然被程序使用的对象。</li>
-<li>在整理阶段，垃圾回收器将所有标记为“存活”的对象移动到内存的一端，将未被标记的对象移动到内存的另一端，然后将这些未被标记的内存区域释放掉，以形成一块<strong>连续的内存空间</strong>。</li>
-</ul>
-<p><img src="/./img/7.2.png"></p>
-<h5 id="3-优缺点-2"><a href="#3-优缺点-2" class="headerlink" title="3.优缺点"></a>3.优缺点</h5><ul>
-<li>优点在于它可以解决标记清除算法可能导致的内存碎片化问题，从而减少了内存分配失败的概率。</li>
-<li>缺点在于它需要在程序暂停时执行垃圾回收操作，可能会影响程序的性能。</li>
-</ul>
-<h4 id="2-3-复制"><a href="#2-3-复制" class="headerlink" title="2.3.复制"></a>2.3.复制</h4><h5 id="1-定义-4"><a href="#1-定义-4" class="headerlink" title="1.定义"></a>1.定义</h5><p>复制（Copying）是将内存分为两个区域，每次只使用其中的一半。当当前区域的内存使用率达到一定阈值时，垃圾回收器会扫描当前区域中的存活对象，将它们复制到另一个空闲区域中，然后将当前区域清空，以便下一轮内存分配使用。</p>
-<h5 id="2-作用-2"><a href="#2-作用-2" class="headerlink" title="2.作用"></a>2.作用</h5><p>该算法的主要步骤如下：</p>
-<ol>
-<li><p>将内存分为两个大小相等的区域，分别称为“From Space”和“To Space”。初始时，所有对象存放在From Space中。当From Space中的内存使用率达到一定阈值时，垃圾回收器开始扫描From Space中的存活对象。</p>
-<p><img src="/./img/8.1.png"></p>
-</li>
-<li><p>垃圾回收器将这些存活对象复制到To Space中，并按照它们在From Space中的顺序排列。</p>
-<p><img src="/./img/8.2.png"></p>
-</li>
-<li><p>垃圾回收器清空From Space，使其成为空闲空间。<img src="/./img/8.3.png"></p>
-</li>
-<li><p>交换From Space和To Space的角色，使To Space成为新的From Space，From Space成为空闲空间。</p>
-<p><img src="/./img/8.4.png"></p>
-</li>
-</ol>
-<h5 id="3-优缺点-3"><a href="#3-优缺点-3" class="headerlink" title="3.优缺点"></a>3.优缺点</h5><ul>
-<li>优点在于它可以避免内存碎片化问题，因为每次复制存活对象时，都会将它们按顺序排列在新的空间中，从而形成一块连续的内存空间。另外，复制算法不需要执行标记和清除或标记和整理等额外的操作，因此执行起来比较高效。</li>
-<li>缺点在于它需要使用双倍的内存空间来执行复制操作，这可能会导致<strong>内存使用率较低</strong>。此外，复制算法不能有效地处理长时间存活的对象，因为这些对象需要被反复复制，导致垃圾回收的效率降低。因此，复制算法通常用于<strong>处理生命周期短的对象</strong>，例如临时变量和函数调用栈中的对象。</li>
-</ul>
-<h2 id="3-分代垃圾回收"><a href="#3-分代垃圾回收" class="headerlink" title="3.分代垃圾回收"></a>3.分代垃圾回收</h2><h5 id="1-定义-5"><a href="#1-定义-5" class="headerlink" title="1.定义"></a>1.定义</h5><ul>
-<li>Minor GC（新生代垃圾回收）是指针对新生代内存区域进行的垃圾回收，新生代内存区域通常是指年轻代和幸存者代。</li>
-<li>Full GC（老年代垃圾回收）是指针对整个堆内存进行的垃圾回收。堆内存通常是指整个Java虚拟机中的内存区域，包括新生代和老年代。</li>
-</ul>
-<h5 id="2-作用-3"><a href="#2-作用-3" class="headerlink" title="2.作用"></a>2.作用</h5><p><img src="/./img/8.5.png"></p>
-<ul>
-<li><p>对象首先分配在伊甸园区域</p>
-<p>当一个大对象内存大于伊甸园的内存时，就直接进入老年代</p>
-<p>大对象内存也大于老年代的内存时，就会进行full gc</p>
-</li>
-<li><p>新生代空间不足时，<strong>触发minor gc</strong>，伊甸园和from存活的对象使用copy复制到to中，存活的对象年龄加1并且交换from to</p>
-</li>
-<li><p>minor gc 会引发stop the world，暂停其它用户的线程，等垃圾回收结束，用户线程才恢复运行当对象寿命超过阈值时，会晋升至老年代，最大寿命是15 (4bit)</p>
-</li>
-<li><p>当老年代空间不足，会先尝试触发minor gc，如果之后空间仍不足，那么<strong>触发full gc</strong>，STW的时间更长</p>
-</li>
-</ul>
-<p>3.相关jvm参数</p>
-<table>
-<thead>
-<tr>
-<th>含义</th>
-<th>参数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>堆初始大小</td>
-<td>-Xms</td>
-</tr>
-<tr>
-<td>堆最大大小</td>
-<td>-Xmx 或-XX:MaxHeapSize=size</td>
-</tr>
-<tr>
-<td>新生代大小</td>
-<td>-Xmn或(-XX:NewSize=size +-XX:MaxNewSize=size )</td>
-</tr>
-<tr>
-<td>幸存区比例(动态)</td>
-<td>-xX:InitialSurvivorRatio=ratio和-XX:+UseAdaptiveSizePolicy</td>
-</tr>
-<tr>
-<td>幸存区比例</td>
-<td>-xx:SurvivorRatio=ratio</td>
-</tr>
-<tr>
-<td>晋升阈值</td>
-<td>-XX:MaxTenuringThreshold=threshold</td>
-</tr>
-<tr>
-<td>晋升详情</td>
-<td>-XX:+PrintTenuringDistribution</td>
-</tr>
-<tr>
-<td>FullGC前MinorGC</td>
-<td>-XX:+PrintGCDetails -verbose:gc</td>
-</tr>
-<tr>
-<td>FullGC前MinorGC</td>
-<td>-XX:+ScavengeBeforeFullGC</td>
-</tr>
-</tbody></table>
-<h2 id="4-垃圾回收器"><a href="#4-垃圾回收器" class="headerlink" title="4.垃圾回收器"></a>4.垃圾回收器</h2><h4 id="4-1-串行回收器"><a href="#4-1-串行回收器" class="headerlink" title="4.1.串行回收器"></a>4.1.串行回收器</h4><h5 id="1-单线程"><a href="#1-单线程" class="headerlink" title="1.单线程"></a>1.单线程</h5><h5 id="2-堆内存较小，适合个人电脑"><a href="#2-堆内存较小，适合个人电脑" class="headerlink" title="2.堆内存较小，适合个人电脑"></a>2.堆内存较小，适合个人电脑</h5><p><strong>serial、Serial old收集器</strong>（Hotspot中Client模式下默认的新生代垃圾收集器）</p>
-<p><strong>算法：复制算法、串行回收和”Stop The World”机制的方式执行内存回收</strong></p>
-<p>​			<strong>除新生代之外，Serial还提供用于老年代垃圾回收的Serial Old收集器。Serial Old同样采用了串行回收和”Stop The World”，只不过内存回收算法使用的是标记-压缩算法</strong></p>
-<p><img src="/./img/a1.png"></p>
-<h4 id="4-2-并行回收器"><a href="#4-2-并行回收器" class="headerlink" title="4.2.并行回收器"></a>4.2.并行回收器</h4><h5 id="1-多线程"><a href="#1-多线程" class="headerlink" title="1.多线程"></a>1.多线程</h5><h5 id="2-堆内存较大，多核cpu"><a href="#2-堆内存较大，多核cpu" class="headerlink" title="2.堆内存较大，多核cpu"></a>2.堆内存较大，多核cpu</h5><h5 id="3-单位时间内，stw时间最短"><a href="#3-单位时间内，stw时间最短" class="headerlink" title="3.单位时间内，stw时间最短"></a>3.单位时间内，stw时间最短</h5><p><strong>Parallel收集器</strong>(jdk8默认使用)、ParNew、Parallel scavenge、Parallel old</p>
-<p><strong>算法：复制算法、并行回收、”Stop The World”</strong></p>
-<p>​	<strong>Parallel在JDK1.6提供了用于执行老年代的Parallel Old，用来代替Serial Old<br>​	Parallel Old采用了标记-压缩算法，但同样是基于并行回收、”Stop The World”</strong></p>
-<p><strong>目标：是达到一个可控制的吞吐量，也被称为吞吐量优先的垃圾回收器</strong><br>           <strong>自适应调节策略也是Parallel Scavenge和ParNew的区别</strong></p>
-<p>高吞吐量则可以高效率的利用CPU时间，尽快完成程序的运算任务，主要适合在后台运算而不需要太多交互的任务。因此，常见在服务器环境中使用。例如：执行<strong>批量处理、订单处理、工资支付、科学计算</strong>的应用程序</p>
-<h5 id=""><a href="#" class="headerlink" title=""></a></h5><p>-XX:+UseParallelGC~-XX:+UseParalleloldGc</p>
-<p><img src="/./img/b1.png"></p>
-<h4 id="4-3-并发回收器"><a href="#4-3-并发回收器" class="headerlink" title="4.3.并发回收器"></a>4.3.并发回收器</h4><h5 id="1-多线程-1"><a href="#1-多线程-1" class="headerlink" title="1.多线程"></a>1.多线程</h5><h5 id="2-堆内存较大，多核cpu-1"><a href="#2-堆内存较大，多核cpu-1" class="headerlink" title="2.堆内存较大，多核cpu"></a>2.堆内存较大，多核cpu</h5><h5 id="3-尽可能让单次的stw时间最短"><a href="#3-尽可能让单次的stw时间最短" class="headerlink" title="3.尽可能让单次的stw时间最短"></a>3.尽可能让单次的stw时间最短</h5><h5 id="4-3-1-CMS收集器"><a href="#4-3-1-CMS收集器" class="headerlink" title="4.3.1.CMS收集器"></a>4.3.1.CMS收集器</h5><p><strong>算法：CMS采用标记-清除算法，也会有STW</strong></p>
-<p><strong>目的：尽可能缩短垃圾回收时用户线程的停顿时间。停顿时间越短就越适合与用户交互的程序，良好的响应速度能提升用户体验</strong></p>
-<p>过程：</p>
-<ol>
-<li>初始标记阶段(Initial-Mark)：所有的工作线程会因为STW而出现短暂的停顿，这个阶段的主要任务仅仅只是标记除GC Roots能直接关联到的对象。一旦标记完成后就会恢复之前的应用线程。由于直接关联对象比较小，所以这里速度非常快</li>
-<li>并发标记(Concurrent-Mark)：从GC Roots的直接关联对象开始遍历整个对象图的过程，耗时较长但是不需要停顿用户线程，可以与垃圾回收线程并发运行</li>
-<li>重新标记(Remark)：由于在并发标记阶段中，程序的工作线程会和垃圾回收线程同时运行或者交叉运行，因此为了修正并发标记期间，因用户线程继续运作而导致标记产生变动的那一部分对象的标记记录，这个阶段的停顿时间通常会比初始标记阶段稍长一些，但也远比并发标记阶段的时间短</li>
-<li>并发清除(Concurrent-Sweep)：清理删除掉标记阶段判断的已经死亡的对象，释放内存空间。由于不需要移动存活对象，所以这个阶段也是可以与用户线程并发的</li>
-</ol>
-<h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6><p>-XX:+UseConcMarkSweepGC~ -XX :+UseParNewGC ~ Serialold</p>
-<p><img src="/./img/c1.png"></p>
-<h5 id="4-3-2-G1"><a href="#4-3-2-G1" class="headerlink" title="4.3.2.G1"></a>4.3.2.G1</h5><p><img src="/./img/d1.png"></p>
-<h6 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h6><p>   G1（Garbage First）收集器是 JDK7 提供的一个新收集器，在 JDK9 中更被指定为官方GC收集器，与CMS收集器相比，最突出的改进是：</p>
+<h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3><p>同一作用域中，函数名相同，参数表不同的函数。重载和返回值和参数名没有关系。</p>
 <blockquote>
-<ul>
-<li>基于 “标记-整理” 算法，收集后不会产生内存碎片。</li>
-<li>可以非常精确控制停顿时间，在不牺牲吞吐量前提下，实现低停顿垃圾回收。</li>
-</ul>
+<p>函数作用域不是定义决定的，是声明决定的。</p>
 </blockquote>
-<p> G1 收集器不采用传统的新生代和老年代物理隔离的布局方式，仅在逻辑上划分新生代和老年代，将整个堆内存划分为2048个大小相等的独立内存块Region，每个Region是逻辑连续的一段内存并使用不同的Region来表示新生代和老年代，G1不再要求相同类型的 Region 在物理内存上相邻，而是通过Region的动态分配方式实现逻辑上的连续。</p>
-<p>​        G1收集器通过跟踪Region中的垃圾堆积情况，每次根据设置的垃圾回收时间，回收优先级最高的区域，避免整个新生代或整个老年代的垃圾回收，使得stop the world的时间更短、更可控，同时在有限的时间内可以获得最高的回收效率。</p>
-<p>​        通过区域划分和优先级区域回收机制，确保G1收集器可以在有限时间获得最高的垃圾收集效率。</p>
-<h6 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h6><p>G1垃圾回收器的工作过程主要包括以下几个步骤：</p>
-<ol>
-<li><p>初始标记阶段（Initial Mark）：这个阶段是G1垃圾回收器的STW（Stop-The-World）阶段，即暂停应用程序的运行。在这个阶段，G1会标记所有的根对象，并标记所有的年轻代对象和部分老年代对象。这个阶段的主要目的是确定哪些对象是存活的，哪些对象可以被回收。</p>
-</li>
-<li><p>并发标记阶段（Concurrent Mark）：这个阶段是G1垃圾回收器的并发标记阶段，即在应用程序运行的同时，对存活对象进行标记。在这个阶段，G1会对所有的老年代对象进行标记。这个阶段的主要目的是标记所有的存活对象，为下一阶段的回收做准备。</p>
-</li>
-<li><p>并发预清理阶段（Concurrent Preclean）：这个阶段是G1垃圾回收器的并发预清理阶段，即在应用程序运行的同时，对标记的对象进行清理。在这个阶段，G1会清理掉一些无用的对象，以便在下一阶段的回收中提高效率。</p>
-</li>
-<li><p>最终标记阶段（Final Mark）：这个阶段是G1垃圾回收器的STW阶段，即暂停应用程序的运行。在这个阶段，G1会标记所有的存活对象，以及在并发标记阶段和并发预清理阶段中可能被遗漏的对象。这个阶段的主要目的是确保所有的存活对象都被标记。</p>
-</li>
-<li><p>筛选回收阶段（Live Data Counting and Evacuation）：这个阶段是G1垃圾回收器的并发筛选回收阶段，即在应用程序运行的同时，对标记的对象进行筛选和回收。在这个阶段，G1会根据区域的垃圾比例和空间利用率等因素，动态选择回收对象，以最大化回收效率。这个阶段的主要目的是回收垃圾最多的区域，以最大化回收效率。</p>
-</li>
-<li><p>再次标记阶段（Remark）：这个阶段是G1垃圾回收器的STW阶段，即暂停应用程序的运行。在这个阶段，G1会标记在筛选回收阶段中可能被遗漏的对象。这个阶段的主要目的是确保所有的存活对象都被标记。</p>
-</li>
-<li><p>清理阶段（Cleanup）：这个阶段是G1垃圾回收器的STW阶段，即暂停应用程序的运行。在这个阶段，G1会回收所有未被标记的对象，并进行内存整理。这个阶段的主要目的是回收内存空间，为应用程序提供足够的可用内存。</p>
-</li>
+<blockquote>
+<p>重载是编译器通过换名实现，<br>在linux下 用gcc -c 获取.o 使用nm .o文件查看<br>在windows下查看obj文件，或者不定义函数，只声明和使用<br>通过extern “C”可以要求C++编译器按照C方式处理函数接口</p>
+</blockquote>
+<h4 id="缺省参数和哑元"><a href="#缺省参数和哑元" class="headerlink" title="缺省参数和哑元"></a>缺省参数和哑元</h4><p>为函数指定缺省值，调用时若未指定实参，则对应的形参取缺省值</p>
+<h4 id="缺省参数的特点"><a href="#缺省参数的特点" class="headerlink" title="缺省参数的特点"></a>缺省参数的特点</h4><ol>
+<li>最好在函数声明中指定。可以利用声明改缺省值。</li>
+<li>禁止在声明和定义同时指定缺省参数。可能不一致，编译器禁止</li>
+<li>缺省参数只能在最后，即你某个参数指定为缺省参数，后面所有参数都要有缺省值</li>
+<li>不要因为是用缺省参数导致重载歧义</li>
 </ol>
-<h6 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h6><ul>
-<li>同时注重吞吐量(Throughput)和低延迟(Low latency)，默认的暂停目标是200 ms</li>
-<li>超大堆内存，会将堆划分为多个大小相等的Region<br>整体上是标记+整理算法，两个区域之间是复制算法</li>
-<li>缺点，例如在回收大对象时的性能可能不如其他垃圾回收器。</li>
+<p>只指定类型而不指定名称的函数参数，叫做哑元。<br>使用哑元1.兼容之前版本。二.形成函数重载</p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>引用（reference）是c++对c语言的重要扩充。<br>引用就是某一变量（内存）的一个别名，对引用的操作与对变量直接操作完全一样。其格式为：<br>类型 &amp;引用变量名 = 已定义过的变量名。</p>
+<p>&amp;符号：跟在类型后是引用，没有类型是取地址<br>*符号：跟在类型后是指针，没有类型是解引用</p>
+<h4 id="引用的特点"><a href="#引用的特点" class="headerlink" title="引用的特点"></a>引用的特点</h4><ul>
+<li>一个变量可取多个别名。</li>
+<li>引用必须初始化，不能为空。</li>
+<li>引用只能在初始化的时候引用一次 ，不能更改为转而引用其他变量</li>
 </ul>
-<h6 id="相关JVM参数"><a href="#相关JVM参数" class="headerlink" title="相关JVM参数"></a>相关JVM参数</h6><p>-XX : +UseG1GC<br>-XX:G1HeapRegionsize=size|<br>-XX:MaxGCPauseMillis=time</p>
-<h4 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h4><p><img src="/./img/12.png"></p>
-<p>最小化地使用内存和并行开销，请选serial GC;</p>
-<p>最大化应用程序的吞吐量，请选Parallel GC;</p>
-<p>最小化Gc的中断或停顿时间，请选CMs GC。</p>
-<h2 id="5-垃圾回收调优"><a href="#5-垃圾回收调优" class="headerlink" title="5.垃圾回收调优"></a>5.垃圾回收调优</h2><h5 id="1-案例"><a href="#1-案例" class="headerlink" title="1.案例"></a>1.案例</h5><p><strong>案例1：Full GC和Minor GC频繁</strong></p>
-<p>​		在此情形下，需要先确定应用程序的内存使用情况，例如堆内存大小、对象创建和销毁的频率等。如果堆内存过小，可能会导致垃圾收集的频率增加，从而影响应用程序的性能。可以通过增加堆内存大小来减少垃圾收集的频率。</p>
-<p>​		另外，需要分析垃圾收集的日志，查看Full GC和Minor GC的发生频率和原因。如果Full GC和Minor GC的发生频率过高，可能是因为应用程序中存在大量的无用对象或内存泄漏。可以使用一些内存分析工具来识别和优化这些问题，例如查看内存堆转储（heap dump）中的对象信息、分析对象引用关系等。</p>
-<p><strong>案例2：请求高峰期发生Full GC，单次暂停时间特别长（CMS）</strong></p>
-<p>​		在此情形下，需要增加CMS收集器的并发线程数，以提高CMS收集器的并发处理能力，减少单次Full GC的暂停时间。可以使用参数”-XX:CMSConcurrentMTEnabled”来启用CMS收集器的多线程并发模式。</p>
-<p>​		另外，需要分析Full GC的日志，查看Full GC的原因和持续时间。如果Full GC的持续时间过长，可能是因为CMS收集器的老年代空间不足，导致Full GC无法回收足够的内存空间。可以通过增加老年代的空间大小来解决这个问题。</p>
-<p><strong>案例3：老年代充裕情况下，发生Full GC（1.7）</strong></p>
-<p>​		在此情形下，可能是因为应用程序中存在大量的长时间存活的对象，导致老年代空间被占满，无法再分配新的对象。可以通过增加老年代的空间大小来解决这个问题。</p>
-<p>​		另外，还可以考虑使用G1收集器来改善垃圾收集的效率和性能。G1收集器可以根据应用程序的实际情况，动态调整垃圾回收的策略和参数，以最小化暂停时间和最大化吞吐量。可以通过使用参数”-XX:+UseG1GC”来启用G1收集器。</p>
+<h4 id="const引用"><a href="#const引用" class="headerlink" title="const引用"></a>const引用</h4><p>引用变量和被引用的变量虽然是同一个变量，但是可以被不同修饰符修饰</p>
+<h4 id="引用做参数"><a href="#引用做参数" class="headerlink" title="引用做参数"></a>引用做参数</h4><ul>
+<li>节省空间+提高效率</li>
+<li>值传递，形参生成局部临时变量接收实参的值。</li>
+<li>引用传递，形参是实参的别名</li>
+<li>指针传递，传入实参的地址，指针通过地址访问修改值</li>
+</ul>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+void fun1(int a)
+{
+    a += 1;
+}
+
+void fun2(int &amp;a)
+{
+    a += 1;
+}
+void fun3(int *a)
+{
+    *a += 1;
+}
+int main()
+{
+    int a = 10;
+    fun1(a);
+    cout &lt;&lt; a &lt;&lt; endl;
+    fun2(a);
+    cout &lt;&lt; a &lt;&lt; endl;
+    fun3(&amp;a);
+    cout &lt;&lt; a &lt;&lt; endl;
+    return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出结果为</p>
+<p>10<br>11<br>12</p>
+<h4 id="引用做函数返回值"><a href="#引用做函数返回值" class="headerlink" title="引用做函数返回值"></a>引用做函数返回值</h4><p>当引用做函数的返回值时: 函数可以放在赋值语句的左边(可以当左值)</p>
+<p>实现了动态引用</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int &amp;fun1(int &amp;a)
+{
+    return a;
+}
+int main()
+{
+    int b;
+    int c = 3;
+    int d = 4;
+    fun1(b) = c;
+    cout &lt;&lt; b &lt;&lt; endl;
+    fun1(b) = d;
+    cout &lt;&lt; b &lt;&lt; endl;
+    return 0;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出结果为</p>
+<p>3<br>4</p>
+<h3 id="动态分配-内存池"><a href="#动态分配-内存池" class="headerlink" title="动态分配+内存池"></a>动态分配+内存池</h3><h4 id="动态分配"><a href="#动态分配" class="headerlink" title="动态分配"></a>动态分配</h4><p>C语言使用malloc来动态分配内存空间，free释放内存空间，C++使用new和delete来创建和释放内存空间</p>
+<p>在分配内存的同时初始化 int *p=new int(100);表示 *p的值为100；数组方式new的需要以数组方式delete</p>
+<p>int *p = new int[2]{4, 2};  delete [ ]p;</p>
+<h4 id="内存池"><a href="#内存池" class="headerlink" title="内存池"></a>内存池</h4><p>预先分配好，放到进程空间的内存块，用户申请与释放内存其实都是在进程内进行,遇到小对象时就是基于内存池的。只有当内存池空间不够时，才会再从系统找一块很大的内存</p>
+<h3 id="引用和指针的区别和联系"><a href="#引用和指针的区别和联系" class="headerlink" title="引用和指针的区别和联系"></a>引用和指针的区别和联系</h3><p>两者都是地址的概念<br>指针指向一块内存，其内容为所指内存的地址；<br>引用是某块儿内存的别名。</p>
+<p>1.指针是一个实体，而引用仅是个别名；<br>2.引用使用时无需解引用(*)，指针需要解引用；<br>3.引用只能在定义时被初始化一次，之后不可变；指针可变；<br>4.引用没有 const，指针有 const；const修饰的指针不可变；<br>5.引用不能为空，指针可以为空；<br>6.“sizeof 引用”得到的是所指向的变量(对象)的大小，而“sizeof 指针”得到的是指针本身(所指向的变量或对象的地址)的大小；<br>7.指针和引用的自增(++)运算意义不一样；<br>8.从内存分配上看：程序为指针变量分配内存区域，而引用不需要分配内存区域。</p>
+<h3 id="new-和delete实现二维数组的动态申请内存"><a href="#new-和delete实现二维数组的动态申请内存" class="headerlink" title="new 和delete实现二维数组的动态申请内存"></a>new 和delete实现二维数组的动态申请内存</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int **arr = NULL;
+int **fun(int a, int b) // 动态分配数组函数
+{
+
+    int i;
+    arr = new int *[a]; // 创建指向一维数组的指针数组
+    for (int i = 0; i &lt; b; i++)
+    {
+        arr[i] = new int[b]; // 为每一个指针数组的值进行赋值
+    }
+    arr[0][0] = 5;
+    return arr;
+}
+
+int main()
+{
+
+    int **q; // 用来接收函数返回的二维数组的头地址
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b; // 输入行列
+    q = fun(a, b);
+    cout &lt;&lt; **q &lt;&lt; endl;
+    return 0;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输入</p>
+<p>2</p>
+<p>2</p>
+<p>输出结果为</p>
+<p>5</p>
 
                 
             </div>
@@ -848,7 +774,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ljj218799.github.io/2023/08/30/jvm-la-ji-hui-shou/">http://ljj218799.github.io/2023/08/30/jvm-la-ji-hui-shou/</a>
+                    <a href="http://ljj218799.github.io/2023/08/30/c-ji-chu-pian/">http://ljj218799.github.io/2023/08/30/c-ji-chu-pian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -886,12 +812,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
-                                <a href="/tags/jvm/">
-                                    <span class="chip bg-color">jvm</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
                                 </a>
                             
                         </div>
@@ -1065,13 +987,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/08/30/c-ji-chu-pian/">
+                <a href="/2023/08/30/c-yu-yan-jin-jie-pian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="C++基本篇">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="C语言进阶篇">
                         
-                        <span class="card-title">C++基本篇</span>
+                        <span class="card-title">C语言进阶篇</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1088,8 +1010,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E2%80%93-C/" class="post-category">
-                                    – C++
+                            <a href="/categories/%E2%80%93-C%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    – C语言
                                 </a>
                             
                             
@@ -1099,8 +1021,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">C语言</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/">
+                        <span class="chip bg-color">结构体</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%8C%87%E9%92%88/">
+                        <span class="chip bg-color">指针</span>
                     </a>
                     
                 </div>
@@ -1114,13 +1044,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/08/30/jvm-nei-cun-jie-gou/">
+                <a href="/2023/08/30/jvm-la-ji-hui-shou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="JVM的内存结构">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="JVM垃圾回收">
                         
-                        <span class="card-title">JVM的内存结构</span>
+                        <span class="card-title">JVM垃圾回收</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
