@@ -575,7 +575,7 @@
                 <h1 id="二、内存结构"><a href="#二、内存结构" class="headerlink" title="二、内存结构"></a>二、内存结构</h1><h2 id="1-程序计数器"><a href="#1-程序计数器" class="headerlink" title="1.程序计数器"></a>1.程序计数器</h2><h4 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1.定义"></a>1.1.定义</h4><ul>
 <li><h5 id="JVM程序计数器的英文全称是Program-Counter-Register，又叫程序计数寄存器。Register的命名源于CPU的寄存器，寄存器存储指令相关的现场信息。CPU只有把数据装载到寄存器才能够运行。JVM中的PC寄存器是对物理PC寄存器的一种抽象模拟，每个线程都有一个程序计数器，它是线程私有的，线程切换时会保存和恢复计数器的值。"><a href="#JVM程序计数器的英文全称是Program-Counter-Register，又叫程序计数寄存器。Register的命名源于CPU的寄存器，寄存器存储指令相关的现场信息。CPU只有把数据装载到寄存器才能够运行。JVM中的PC寄存器是对物理PC寄存器的一种抽象模拟，每个线程都有一个程序计数器，它是线程私有的，线程切换时会保存和恢复计数器的值。" class="headerlink" title="JVM程序计数器的英文全称是Program Counter Register，又叫程序计数寄存器。Register的命名源于CPU的寄存器，寄存器存储指令相关的现场信息。CPU只有把数据装载到寄存器才能够运行。JVM中的PC寄存器是对物理PC寄存器的一种抽象模拟，每个线程都有一个程序计数器，它是线程私有的，线程切换时会保存和恢复计数器的值。"></a>JVM程序计数器的英文全称是Program Counter Register，又叫程序计数寄存器。Register的命名源于CPU的寄存器，寄存器存储指令相关的现场信息。CPU只有把数据装载到寄存器才能够运行。JVM中的PC寄存器是对物理PC寄存器的一种抽象模拟，每个线程都有一个程序计数器，它是线程私有的，线程切换时会保存和恢复计数器的值。</h5></li>
 </ul>
-<h4 id="1-2-作用"><a href="#1-2-作用" class="headerlink" title="1.2.作用"></a>1.2.作用</h4><p><img src="/img%5C2.1.png"></p>
+<h4 id="1-2-作用"><a href="#1-2-作用" class="headerlink" title="1.2.作用"></a>1.2.作用</h4><p><img src="/./img%5C2.1.png"></p>
 <ol>
 <li><h5 id="用于存储下一条指令的地址。详细的说PC寄存器是用来存储指向下一条指令的地址，也就是即将将要执行的指令代码。由执行引擎读取下一条指令。"><a href="#用于存储下一条指令的地址。详细的说PC寄存器是用来存储指向下一条指令的地址，也就是即将将要执行的指令代码。由执行引擎读取下一条指令。" class="headerlink" title="用于存储下一条指令的地址。详细的说PC寄存器是用来存储指向下一条指令的地址，也就是即将将要执行的指令代码。由执行引擎读取下一条指令。"></a>用于存储下一条指令的地址。详细的说PC寄存器是用来存储指向下一条指令的地址，也就是即将将要执行的指令代码。由执行引擎读取下一条指令。</h5></li>
 <li><h5 id="实现线程间的协作：程序计数器还可以实现线程间的协作。例如，当线程执行一个被同步锁保护的代码块时，如果该代码块被另外一个线程占用，则当前线程会被挂起，等待锁的释放。在等待期间，程序计数器会记录当前线程的执行位置，以便在锁被释放后，恢复线程的执行状态，从而继续执行代码块。"><a href="#实现线程间的协作：程序计数器还可以实现线程间的协作。例如，当线程执行一个被同步锁保护的代码块时，如果该代码块被另外一个线程占用，则当前线程会被挂起，等待锁的释放。在等待期间，程序计数器会记录当前线程的执行位置，以便在锁被释放后，恢复线程的执行状态，从而继续执行代码块。" class="headerlink" title="实现线程间的协作：程序计数器还可以实现线程间的协作。例如，当线程执行一个被同步锁保护的代码块时，如果该代码块被另外一个线程占用，则当前线程会被挂起，等待锁的释放。在等待期间，程序计数器会记录当前线程的执行位置，以便在锁被释放后，恢复线程的执行状态，从而继续执行代码块。"></a>实现线程间的协作：程序计数器还可以实现线程间的协作。例如，当线程执行一个被同步锁保护的代码块时，如果该代码块被另外一个线程占用，则当前线程会被挂起，等待锁的释放。在等待期间，程序计数器会记录当前线程的执行位置，以便在锁被释放后，恢复线程的执行状态，从而继续执行代码块。</h5></li>
@@ -585,8 +585,8 @@
 <li><h5 id="是在Java虚拟机规范中规定的唯一一个不会存在内存溢出的区"><a href="#是在Java虚拟机规范中规定的唯一一个不会存在内存溢出的区" class="headerlink" title="是在Java虚拟机规范中规定的唯一一个不会存在内存溢出的区"></a>是在Java虚拟机规范中规定的唯一一个不会存在内存溢出的区</h5></li>
 <li><h5 id="执行java方法时，程序计数器是有值的，执行native本地方法时，程序计数器的值为空"><a href="#执行java方法时，程序计数器是有值的，执行native本地方法时，程序计数器的值为空" class="headerlink" title="执行java方法时，程序计数器是有值的，执行native本地方法时，程序计数器的值为空"></a>执行java方法时，程序计数器是有值的，执行native本地方法时，程序计数器的值为空</h5></li>
 </ol>
-<h2 id="2-虚拟机栈"><a href="#2-虚拟机栈" class="headerlink" title="2.虚拟机栈"></a>2.虚拟机栈</h2><p><img src="/img%5C2.png"></p>
-<h4 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1.定义"></a>2.1.定义</h4><h5 id="JVM栈是一块内存区域，用于存储方法的执行状态和局部变量。每个线程都拥有自己的栈，栈是线程私有的，线程之间不共享栈。在-Java-中，每个方法的调用都会创建一个新的栈帧（Stack-Frame），栈帧中保存了方法的局部变量、操作数栈、返回地址和异常表等信息。"><a href="#JVM栈是一块内存区域，用于存储方法的执行状态和局部变量。每个线程都拥有自己的栈，栈是线程私有的，线程之间不共享栈。在-Java-中，每个方法的调用都会创建一个新的栈帧（Stack-Frame），栈帧中保存了方法的局部变量、操作数栈、返回地址和异常表等信息。" class="headerlink" title="JVM栈是一块内存区域，用于存储方法的执行状态和局部变量。每个线程都拥有自己的栈，栈是线程私有的，线程之间不共享栈。在 Java 中，每个方法的调用都会创建一个新的栈帧（Stack Frame），栈帧中保存了方法的局部变量、操作数栈、返回地址和异常表等信息。"></a>JVM栈是一块内存区域，用于存储方法的执行状态和局部变量。每个线程都拥有自己的栈，栈是线程私有的，线程之间不共享栈。在 Java 中，每个方法的调用都会创建一个新的栈帧（Stack Frame），栈帧中保存了方法的局部变量、操作数栈、返回地址和异常表等信息。</h5><p><img src="/img%5C2.2.PNG"></p>
+<h2 id="2-虚拟机栈"><a href="#2-虚拟机栈" class="headerlink" title="2.虚拟机栈"></a>2.虚拟机栈</h2><p><img src="/./img%5C2.png"></p>
+<h4 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1.定义"></a>2.1.定义</h4><h5 id="JVM栈是一块内存区域，用于存储方法的执行状态和局部变量。每个线程都拥有自己的栈，栈是线程私有的，线程之间不共享栈。在-Java-中，每个方法的调用都会创建一个新的栈帧（Stack-Frame），栈帧中保存了方法的局部变量、操作数栈、返回地址和异常表等信息。"><a href="#JVM栈是一块内存区域，用于存储方法的执行状态和局部变量。每个线程都拥有自己的栈，栈是线程私有的，线程之间不共享栈。在-Java-中，每个方法的调用都会创建一个新的栈帧（Stack-Frame），栈帧中保存了方法的局部变量、操作数栈、返回地址和异常表等信息。" class="headerlink" title="JVM栈是一块内存区域，用于存储方法的执行状态和局部变量。每个线程都拥有自己的栈，栈是线程私有的，线程之间不共享栈。在 Java 中，每个方法的调用都会创建一个新的栈帧（Stack Frame），栈帧中保存了方法的局部变量、操作数栈、返回地址和异常表等信息。"></a>JVM栈是一块内存区域，用于存储方法的执行状态和局部变量。每个线程都拥有自己的栈，栈是线程私有的，线程之间不共享栈。在 Java 中，每个方法的调用都会创建一个新的栈帧（Stack Frame），栈帧中保存了方法的局部变量、操作数栈、返回地址和异常表等信息。</h5><p><img src="/./img%5C2.2.PNG"></p>
 <ul>
 <li><h5 id="每个线程运行是所需要的内存，称为虚拟机栈"><a href="#每个线程运行是所需要的内存，称为虚拟机栈" class="headerlink" title="每个线程运行是所需要的内存，称为虚拟机栈"></a>每个线程运行是所需要的内存，称为虚拟机栈</h5></li>
 <li><h5 id="每个栈由多个栈帧（Frame）组成，对应着每次方法调用是所占的内存"><a href="#每个栈由多个栈帧（Frame）组成，对应着每次方法调用是所占的内存" class="headerlink" title="每个栈由多个栈帧（Frame）组成，对应着每次方法调用是所占的内存"></a>每个栈由多个栈帧（Frame）组成，对应着每次方法调用是所占的内存</h5></li>
@@ -598,7 +598,7 @@
 <h5 id="–如果方法内局部变量没有逃离方法的作用访问，它是线程安全的"><a href="#–如果方法内局部变量没有逃离方法的作用访问，它是线程安全的" class="headerlink" title="–如果方法内局部变量没有逃离方法的作用访问，它是线程安全的"></a>–<strong>如果方法内局部变量没有逃离方法的作用访问，它是线程安全的</strong></h5><h5 id="–如果是局部变量引用了对象，并逃离方法的作用方法-被方法返回-，需要考虑线程安全"><a href="#–如果是局部变量引用了对象，并逃离方法的作用方法-被方法返回-，需要考虑线程安全" class="headerlink" title="–如果是局部变量引用了对象，并逃离方法的作用方法(被方法返回)，需要考虑线程安全"></a>–如果是局部变量引用了对象，并逃离方法的作用方法(被方法返回)，需要考虑线程安全</h5></li>
 </ul>
 <h4 id="2-2-栈内存溢出"><a href="#2-2-栈内存溢出" class="headerlink" title="2.2.栈内存溢出"></a>2.2.栈内存溢出</h4><h5 id="–出现StackOverflowError-异常"><a href="#–出现StackOverflowError-异常" class="headerlink" title="–出现StackOverflowError 异常"></a>–出现StackOverflowError 异常</h5><ul>
-<li><h5 id="栈帧过多导致栈内存溢出-方法调用层次过深"><a href="#栈帧过多导致栈内存溢出-方法调用层次过深" class="headerlink" title="栈帧过多导致栈内存溢出(方法调用层次过深)"></a>栈帧过多导致栈内存溢出(方法调用层次过深)</h5><p><img src="/img%5C%E6%A0%881.PNG"></p>
+<li><h5 id="栈帧过多导致栈内存溢出-方法调用层次过深"><a href="#栈帧过多导致栈内存溢出-方法调用层次过深" class="headerlink" title="栈帧过多导致栈内存溢出(方法调用层次过深)"></a>栈帧过多导致栈内存溢出(方法调用层次过深)</h5><p><img src="/./img%5C%E6%A0%881.PNG"></p>
 <p>示例</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StackOverflowExample</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -617,7 +617,7 @@
 
 
 </li>
-<li><h5 id="栈帧过大导致栈内存溢出-方法中创建过多的局部变量"><a href="#栈帧过大导致栈内存溢出-方法中创建过多的局部变量" class="headerlink" title="栈帧过大导致栈内存溢出(方法中创建过多的局部变量)"></a>栈帧过大导致栈内存溢出(方法中创建过多的局部变量)</h5><p><img src="/img%5C%E6%A0%882.PNG"></p>
+<li><h5 id="栈帧过大导致栈内存溢出-方法中创建过多的局部变量"><a href="#栈帧过大导致栈内存溢出-方法中创建过多的局部变量" class="headerlink" title="栈帧过大导致栈内存溢出(方法中创建过多的局部变量)"></a>栈帧过大导致栈内存溢出(方法中创建过多的局部变量)</h5><p><img src="/./img%5C%E6%A0%882.PNG"></p>
 <p>示例</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StackOverflowExample</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -646,10 +646,10 @@
 <h4 id="2-3-线程运行诊断"><a href="#2-3-线程运行诊断" class="headerlink" title="2.3.线程运行诊断"></a>2.3.线程运行诊断</h4><ul>
 <li><h5 id="cpu占用过多"><a href="#cpu占用过多" class="headerlink" title="cpu占用过多"></a>cpu占用过多</h5><p><strong>定位:</strong></p>
 <h6 id="a-用top定位哪个进程对cpu的占用过高"><a href="#a-用top定位哪个进程对cpu的占用过高" class="headerlink" title="a.用top定位哪个进程对cpu的占用过高"></a>a.用top定位哪个进程对cpu的占用过高</h6><h6 id="b-ps-H-eo-pid-tid-cpu-grep进程id-用ps命令进一步定位是哪个线程引起的cpu占用过高"><a href="#b-ps-H-eo-pid-tid-cpu-grep进程id-用ps命令进一步定位是哪个线程引起的cpu占用过高" class="headerlink" title="b.ps H -eo pid,tid,%cpu | grep进程id(用ps命令进一步定位是哪个线程引起的cpu占用过高)"></a>b.ps H -eo pid,tid,%cpu | grep进程id(用ps命令进一步定位是哪个线程引起的cpu占用过高)</h6><h6 id="c-jstack-进程id"><a href="#c-jstack-进程id" class="headerlink" title="c.jstack 进程id"></a>c.jstack 进程id</h6><h6 id="可以根据线程id找到有问题的线程-进一步定位到问题代码的源码行号"><a href="#可以根据线程id找到有问题的线程-进一步定位到问题代码的源码行号" class="headerlink" title="可以根据线程id找到有问题的线程,进一步定位到问题代码的源码行号"></a>可以根据线程id找到有问题的线程,进一步定位到问题代码的源码行号</h6></li>
-<li><h5 id="程序运行很长时间没有结果"><a href="#程序运行很长时间没有结果" class="headerlink" title="程序运行很长时间没有结果"></a>程序运行很长时间没有结果</h5><p><img src="/img%5Cx.png"></p>
+<li><h5 id="程序运行很长时间没有结果"><a href="#程序运行很长时间没有结果" class="headerlink" title="程序运行很长时间没有结果"></a>程序运行很长时间没有结果</h5><p><img src="/./img%5Cx.png"></p>
 </li>
 </ul>
-<h2 id="3-本地方法栈"><a href="#3-本地方法栈" class="headerlink" title="3.本地方法栈"></a>3.本地方法栈</h2><p><img src="/img%5C3.png"></p>
+<h2 id="3-本地方法栈"><a href="#3-本地方法栈" class="headerlink" title="3.本地方法栈"></a>3.本地方法栈</h2><p><img src="/./img%5C3.png"></p>
 <h4 id="3-1-定义"><a href="#3-1-定义" class="headerlink" title="3.1.定义"></a>3.1.定义</h4><h5 id="本地方法栈的主要功能是为执行本地方法时提供栈空间"><a href="#本地方法栈的主要功能是为执行本地方法时提供栈空间" class="headerlink" title="本地方法栈的主要功能是为执行本地方法时提供栈空间"></a>本地方法栈的主要功能是为执行本地方法时提供栈空间</h5><h5 id="本地方法-可以让-Java-程序调用底层系统的资源和功能，例如操作系统的文件系统、网络接口、硬件设备等。"><a href="#本地方法-可以让-Java-程序调用底层系统的资源和功能，例如操作系统的文件系统、网络接口、硬件设备等。" class="headerlink" title="本地方法:可以让 Java 程序调用底层系统的资源和功能，例如操作系统的文件系统、网络接口、硬件设备等。"></a>本地方法:可以让 Java 程序调用底层系统的资源和功能，例如操作系统的文件系统、网络接口、硬件设备等。</h5><h6 id="JVM-中的本地方法主要有以下两种类型："><a href="#JVM-中的本地方法主要有以下两种类型：" class="headerlink" title="JVM 中的本地方法主要有以下两种类型："></a>JVM 中的本地方法主要有以下两种类型：</h6><ul>
 <li>​		-Native 方法：Native 方法是指在 Java 中声明的本地方法，其实现由本地代码编写。</li>
 <li>​		-JNI 方法：JNI 方法是指在本地代码中实现的 Java 方法</li>
@@ -666,7 +666,7 @@
 <li><p>java.util.Random：Random 类是一个随机数生成器，它的本地方法用于获取随机数种子和生成随机数。</p>
 </li>
 </ul>
-<h2 id="4-堆"><a href="#4-堆" class="headerlink" title="4.堆"></a>4.堆</h2><p><img src="/img%5C4.png"></p>
+<h2 id="4-堆"><a href="#4-堆" class="headerlink" title="4.堆"></a>4.堆</h2><p><img src="/./img%5C4.png"></p>
 <h4 id="4-1-定义"><a href="#4-1-定义" class="headerlink" title="4.1.定义"></a>4.1.定义</h4><h5 id="1-Heap-堆"><a href="#1-Heap-堆" class="headerlink" title="1.Heap 堆"></a>1.Heap 堆</h5><h5 id="堆是-Java-虚拟机管理的内存区域之一，用于存储对象实例和数组（通过new关键字创建对象）等数据。"><a href="#堆是-Java-虚拟机管理的内存区域之一，用于存储对象实例和数组（通过new关键字创建对象）等数据。" class="headerlink" title="堆是 Java 虚拟机管理的内存区域之一，用于存储对象实例和数组（通过new关键字创建对象）等数据。"></a>堆是 Java 虚拟机管理的内存区域之一，用于存储对象实例和数组（<strong>通过new关键字创建对象）等数据。</strong></h5><h5 id="2-特点"><a href="#2-特点" class="headerlink" title="2.特点"></a>2.特点</h5><ul>
 <li><h5 id="是线程共享的-堆中对象要考虑线程安全的问题–-线程栈和程序计数器"><a href="#是线程共享的-堆中对象要考虑线程安全的问题–-线程栈和程序计数器" class="headerlink" title="是线程共享的:  堆中对象要考虑线程安全的问题–> 线程栈和程序计数器"></a>是线程共享的:  堆中对象要考虑线程安全的问题–&gt; 线程栈和程序计数器</h5></li>
 <li><h5 id="有垃圾回收机制"><a href="#有垃圾回收机制" class="headerlink" title="有垃圾回收机制"></a>有垃圾回收机制</h5></li>
@@ -696,8 +696,8 @@
 <li>jconsole指令  -&gt;工具<br>图形界面的，多功能的监测工具，可以连续监测</li>
 <li>jvisualvm 指令</li>
 </ol>
-<h2 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5.方法区"></a>5.方法区</h2><p><img src="/img%5C5.png"></p>
-<h4 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h4><h5 id="JVM（Java虚拟机）方法区（Method-Area）是JVM中的一个内存区域，用于存储已被加载的类信息、常量、静态变量、即编译器编译后的代码等数据。"><a href="#JVM（Java虚拟机）方法区（Method-Area）是JVM中的一个内存区域，用于存储已被加载的类信息、常量、静态变量、即编译器编译后的代码等数据。" class="headerlink" title="JVM（Java虚拟机）方法区（Method Area）是JVM中的一个内存区域，用于存储已被加载的类信息、常量、静态变量、即编译器编译后的代码等数据。"></a>JVM（Java虚拟机）方法区（Method Area）是JVM中的一个内存区域，用于存储已被加载的类信息、常量、静态变量、即编译器编译后的代码等数据。</h5><h4 id="2-组成"><a href="#2-组成" class="headerlink" title="2.组成"></a>2.组成</h4><p><img src="/img%5C5.1.png"></p>
+<h2 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5.方法区"></a>5.方法区</h2><p><img src="/./img%5C5.png"></p>
+<h4 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h4><h5 id="JVM（Java虚拟机）方法区（Method-Area）是JVM中的一个内存区域，用于存储已被加载的类信息、常量、静态变量、即编译器编译后的代码等数据。"><a href="#JVM（Java虚拟机）方法区（Method-Area）是JVM中的一个内存区域，用于存储已被加载的类信息、常量、静态变量、即编译器编译后的代码等数据。" class="headerlink" title="JVM（Java虚拟机）方法区（Method Area）是JVM中的一个内存区域，用于存储已被加载的类信息、常量、静态变量、即编译器编译后的代码等数据。"></a>JVM（Java虚拟机）方法区（Method Area）是JVM中的一个内存区域，用于存储已被加载的类信息、常量、静态变量、即编译器编译后的代码等数据。</h5><h4 id="2-组成"><a href="#2-组成" class="headerlink" title="2.组成"></a>2.组成</h4><p><img src="/./img%5C5.1.png"></p>
 <ul>
 <li><h5 id="在JDK-1-6中，Java虚拟机方法区的实现是基于永久代（PermGen）的。永久代是一种堆区的一部分，用于存储类信息、常量池、静态变量等数据。由于永久代的大小是有限制的，因此在大量使用动态生成类、反射、动态代理等技术时容易出现永久代溢出的情况，导致Java虚拟机崩溃。"><a href="#在JDK-1-6中，Java虚拟机方法区的实现是基于永久代（PermGen）的。永久代是一种堆区的一部分，用于存储类信息、常量池、静态变量等数据。由于永久代的大小是有限制的，因此在大量使用动态生成类、反射、动态代理等技术时容易出现永久代溢出的情况，导致Java虚拟机崩溃。" class="headerlink" title="在JDK 1.6中，Java虚拟机方法区的实现是基于永久代（PermGen）的。永久代是一种堆区的一部分，用于存储类信息、常量池、静态变量等数据。由于永久代的大小是有限制的，因此在大量使用动态生成类、反射、动态代理等技术时容易出现永久代溢出的情况，导致Java虚拟机崩溃。"></a>在JDK 1.6中，Java虚拟机方法区的实现是基于永久代（PermGen）的。永久代是一种堆区的一部分，用于存储类信息、常量池、静态变量等数据。由于永久代的大小是有限制的，因此在大量使用动态生成类、反射、动态代理等技术时容易出现永久代溢出的情况，导致Java虚拟机崩溃。</h5></li>
 <li><h5 id="在JDK-1-8中，Java虚拟机方法区的实现采用了元空间（Metaspace）的实现方式。元空间是使用本地内存来存储类信息、常量池、静态变量等数据。由于元空间的大小可以动态调整，可以有效地避免Java虚拟机崩溃的情况。"><a href="#在JDK-1-8中，Java虚拟机方法区的实现采用了元空间（Metaspace）的实现方式。元空间是使用本地内存来存储类信息、常量池、静态变量等数据。由于元空间的大小可以动态调整，可以有效地避免Java虚拟机崩溃的情况。" class="headerlink" title="在JDK 1.8中，Java虚拟机方法区的实现采用了元空间（Metaspace）的实现方式。元空间是使用本地内存来存储类信息、常量池、静态变量等数据。由于元空间的大小可以动态调整，可以有效地避免Java虚拟机崩溃的情况。"></a>在JDK 1.8中，Java虚拟机方法区的实现采用了元空间（Metaspace）的实现方式。元空间是使用本地内存来存储类信息、常量池、静态变量等数据。由于元空间的大小可以动态调整，可以有效地避免Java虚拟机崩溃的情况。</h5></li>
@@ -775,7 +775,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="/img%5Cs.jpg"></p>
+<p><img src="/./img%5Cs.jpg"></p>
 <ul>
 <li>在String s4 = s1+s2 是通过new StringBuilder()…  –&gt;字符串变量 s4 是通过字符串变量 a 和 b 的拼接得到的，它是一个新的字符串对象，与字符串常量 “ab” 不相等，</li>
 <li>String s5 = “a”+”b”  是在StringTable中取的已存在的”ab”   –&gt; 字符串常量 “ab” 和 “a” + “b” 的值相等</li>
@@ -792,14 +792,14 @@
 <li><p>可以使用intern方法，主动将串池中还没有的字符串对象放入串池</p>
 <p><strong>1.8将这个字符串对象尝试放入串池，如果有则并不会放入（还在堆区），如果没有则放入串池(堆区-&gt;常量池），会把串池中的对象返回</strong><br><strong>1.6将这个字符串对象尝试放入串池，如果有则并不会放入，如果没有会把此对象复制一份,放入串池,会把串池中的对象返回</strong></p>
 <p>–示例一：   String s = new String(“a”)+new String (“b”)”写在String x = “ab前面</p>
-<p><img src="/img%5C51.png"></p>
+<p><img src="/./img%5C51.png"></p>
 <p>1.8中：”ab” 在串池中没有，会将s放入串池(s从堆区-&gt;常量池），得到的结果为：s==x 为true</p>
 <p>1.6中：”ab” 在串池中没有，会将s拷贝一份再放入串池(s还在堆区），得到的结果为：s==x 为false</p>
 <p>–示例二：如果将String x = “ab”写在String s = new String(“a”)+new String (“b”)前面</p>
 <p>如果有则并不会放入–&gt;都不会进入串池 s==x  都为 false</p>
 </li>
 </ol>
-<h5 id="5-位置"><a href="#5-位置" class="headerlink" title="5.位置"></a>5.位置</h5><p><img src="/img%5C61.png"></p>
+<h5 id="5-位置"><a href="#5-位置" class="headerlink" title="5.位置"></a>5.位置</h5><p><img src="/./img%5C61.png"></p>
 <ul>
 <li><p>JDK 7 及之前的版本中，String Table 是一个固定大小的哈希表存储在永久代中，因此在运行时无法动态扩容</p>
 </li>
@@ -807,7 +807,7 @@
 <p>Compact Strings 技术的实现方式是将较短的字符串常量（长度小于等于 16）存储为字节数组，而不是存储为 char 数组。</p>
 </li>
 </ul>
-<h5 id="6-垃圾回收"><a href="#6-垃圾回收" class="headerlink" title="6.垃圾回收"></a>6.垃圾回收</h5><p><img src="/img%5C62.png"></p>
+<h5 id="6-垃圾回收"><a href="#6-垃圾回收" class="headerlink" title="6.垃圾回收"></a>6.垃圾回收</h5><p><img src="/./img%5C62.png"></p>
 <h5 id="7-调优"><a href="#7-调优" class="headerlink" title="7.调优"></a>7.调优</h5><ul>
 <li>可通过参数 <code>-XX:StringTableSize</code> 来设置 StringTable 的桶大小</li>
 </ul>
@@ -866,16 +866,16 @@
 <li>不受JVM内存回收管理</li>
 </ul>
 <h4 id="2-作用-1"><a href="#2-作用-1" class="headerlink" title="2.作用"></a>2.作用</h4><p><strong>JVM直接内存可以通过Java NIO（New I/O）库中的ByteBuffer类来进行访问和操作，它的主要特点是可以提高I/O操作的效率，减少内存复制和上下文切换的开销。</strong></p>
-<h5 id="–java的io操作-存在缓冲区的复制操作"><a href="#–java的io操作-存在缓冲区的复制操作" class="headerlink" title="–java的io操作(存在缓冲区的复制操作)"></a>–java的io操作(存在缓冲区的复制操作)</h5><p><img src="/img%5C6.1.png"></p>
+<h5 id="–java的io操作-存在缓冲区的复制操作"><a href="#–java的io操作-存在缓冲区的复制操作" class="headerlink" title="–java的io操作(存在缓冲区的复制操作)"></a>–java的io操作(存在缓冲区的复制操作)</h5><p><img src="/./img%5C6.1.png"></p>
 <h5 id="–使直接内存后-ByteBuffer-bb-ByteBuffer-allocateDirect-1024-1024"><a href="#–使直接内存后-ByteBuffer-bb-ByteBuffer-allocateDirect-1024-1024" class="headerlink" title="–使直接内存后 ByteBuffer bb = ByteBuffer.allocateDirect(1024*1024);"></a>–使直接内存后 ByteBuffer bb = ByteBuffer.allocateDirect(1024*1024);</h5><p>这个方法会在<strong>堆内存</strong>中分配一个DirectByteBuffer对象，并在<strong>操作系统</strong>中分配一块原生内存，用来存储ByteBuffer对象中的数据。</p>
-<p><img src="/img%5C6.2.png"></p>
+<p><img src="/./img%5C6.2.png"></p>
 <h4 id="3-原理"><a href="#3-原理" class="headerlink" title="3.原理"></a>3.原理</h4><h5 id="直接内存的释放："><a href="#直接内存的释放：" class="headerlink" title="直接内存的释放："></a>直接内存的释放：</h5><h5 id="Java直接内存的释放需要手动进行，因为它不像Java堆内存那样受到JVM的自动内存管理控制。"><a href="#Java直接内存的释放需要手动进行，因为它不像Java堆内存那样受到JVM的自动内存管理控制。" class="headerlink" title="Java直接内存的释放需要手动进行，因为它不像Java堆内存那样受到JVM的自动内存管理控制。"></a>Java直接内存的释放需要手动进行，因为它不像Java堆内存那样受到JVM的自动内存管理控制。</h5><ol>
 <li>调用DirectByteBuffer类的clear()方法</li>
 <li>freeMemory(long address)：释放指定地址的内存块。</li>
 </ol>
-<p><img src="/img%5C6.3.png"></p>
+<p><img src="/./img%5C6.3.png"></p>
 <h5 id="由于Unsafe类的方法都是native方法，因此它可以绕过JVM的安全检查机制，直接操作内存"><a href="#由于Unsafe类的方法都是native方法，因此它可以绕过JVM的安全检查机制，直接操作内存" class="headerlink" title="由于Unsafe类的方法都是native方法，因此它可以绕过JVM的安全检查机制，直接操作内存"></a>由于Unsafe类的方法都是native方法，因此它可以绕过JVM的安全检查机制，直接操作内存</h5><p><strong>–ByteBuffer.allocateDirect(1024*1024)中对Unsafe的调用;</strong></p>
-<p><img src="/img%5C6.4.png"></p>
+<p><img src="/./img%5C6.4.png"></p>
 <ul>
 <li>使用了Unsafe对象完成直接内存的分配回收，并且回收需要主动调用freeMemory方法</li>
 <li>ByteBuffer的实现类内部，使用了Cleaner(虚引用）来监测ByteBuffer对象，一旦ByteBuffer对象被垃圾回收，那么就会由ReferenceHandler线程通过Cleaner的clean方法调用freeMemor来释放直接内存</li>
