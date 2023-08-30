@@ -584,7 +584,7 @@
 <p>​		可以实现快速的内存回收，因为它不需要遍历整个堆内存，只需要回收引用计数为0的对象即可。</p>
 <p><strong>缺点</strong></p>
 <p>​		实现比较复杂，需要为每个对象维护引用计数器，而且容易出现循环引用的问题，导致内存泄漏。</p>
-<p><img src="/./img%5C6.5.png"></p>
+<p><img src="/./img/6.5.png"></p>
 <p>​		<strong>循环引用指的是两个或多个对象之间相互引用，形成了一个闭环，如果这些对象的引用计数都不为0，那么它们将永远无法被回收，从而导致内存泄漏。</strong></p>
 <h4 id="1-2-可达性分析算法"><a href="#1-2-可达性分析算法" class="headerlink" title="1.2.可达性分析算法"></a>1.2.可达性分析算法</h4><h5 id="1-定义-1"><a href="#1-定义-1" class="headerlink" title="1.定义"></a>1.定义</h5><p>​		可达性分析算法（Reachability Analysis Algorithm）是现代垃圾回收算法中最常用的一种。它的基本思想是从一组根对象开始，通过<strong>遍历对象之间的引用关系</strong>，找到所有可以被访问到的对象，并将这些对象标记为存<strong>活对象</strong>。所有未被标记的对象则可以被视为<strong>垃圾对象</strong>，可以被回收</p>
 <h5 id="2-基本流程"><a href="#2-基本流程" class="headerlink" title="2.基本流程"></a>2.基本流程</h5><ol>
@@ -598,10 +598,10 @@
 </li>
 <li><p>将未被标记的对象作为垃圾对象，进行回收。</p>
 <p><strong>根对象(gc_roots)的查看（MAT工具）</strong></p>
-<p><img src="/./img%5C6.6.png"></p>
+<p><img src="/./img/6.6.png"></p>
 </li>
 </ol>
-<h4 id="1-3-四种引用"><a href="#1-3-四种引用" class="headerlink" title="1.3.四种引用"></a>1.3.四种引用</h4><p><img src="/./img%5C6.7.png"></p>
+<h4 id="1-3-四种引用"><a href="#1-3-四种引用" class="headerlink" title="1.3.四种引用"></a>1.3.四种引用</h4><p><img src="/./img/6.7.png"></p>
 <h5 id="1-强引用"><a href="#1-强引用" class="headerlink" title="1.强引用"></a>1.强引用</h5><ul>
 <li>强引用是最常见的引用类型</li>
 <li>只有所有GC Roots对象都不通过【强引用】引用该对象，该对象才能被垃圾回收</li>
@@ -656,7 +656,7 @@
 <li>在标记阶段，垃圾回收器遍历程序中的所有对象，并标记那些仍然被程序使用的对象。</li>
 <li>在清除阶段，垃圾回收器清除未被标记的对象，释放它们占用的内存。</li>
 </ul>
-<p><img src="/./img%5C7.1.png"></p>
+<p><img src="/./img/7.1.png"></p>
 <h5 id="3-优缺点-1"><a href="#3-优缺点-1" class="headerlink" title="3.优缺点"></a>3.优缺点</h5><ul>
 <li>优点：可以处理循环引用的情况，即当两个或多个对象相互引用时，它们之间的引用关系会被正确地识别和处理。</li>
 <li>缺点：清除内存的过程可能会导致内存碎片化。</li>
@@ -667,7 +667,7 @@
 <li>在标记阶段，垃圾回收器遍历程序中的所有对象，并标记那些仍然被程序使用的对象。</li>
 <li>在整理阶段，垃圾回收器将所有标记为“存活”的对象移动到内存的一端，将未被标记的对象移动到内存的另一端，然后将这些未被标记的内存区域释放掉，以形成一块<strong>连续的内存空间</strong>。</li>
 </ul>
-<p><img src="/./img%5C7.2.png"></p>
+<p><img src="/./img/7.2.png"></p>
 <h5 id="3-优缺点-2"><a href="#3-优缺点-2" class="headerlink" title="3.优缺点"></a>3.优缺点</h5><ul>
 <li>优点在于它可以解决标记清除算法可能导致的内存碎片化问题，从而减少了内存分配失败的概率。</li>
 <li>缺点在于它需要在程序暂停时执行垃圾回收操作，可能会影响程序的性能。</li>
@@ -676,15 +676,15 @@
 <h5 id="2-作用-2"><a href="#2-作用-2" class="headerlink" title="2.作用"></a>2.作用</h5><p>该算法的主要步骤如下：</p>
 <ol>
 <li><p>将内存分为两个大小相等的区域，分别称为“From Space”和“To Space”。初始时，所有对象存放在From Space中。当From Space中的内存使用率达到一定阈值时，垃圾回收器开始扫描From Space中的存活对象。</p>
-<p><img src="/./img%5C8.1.png"></p>
+<p><img src="/./img/8.1.png"></p>
 </li>
 <li><p>垃圾回收器将这些存活对象复制到To Space中，并按照它们在From Space中的顺序排列。</p>
-<p><img src="/./img%5C8.2.png"></p>
+<p><img src="/./img/8.2.png"></p>
 </li>
-<li><p>垃圾回收器清空From Space，使其成为空闲空间。<img src="/./img%5C8.3.png"></p>
+<li><p>垃圾回收器清空From Space，使其成为空闲空间。<img src="/./img/8.3.png"></p>
 </li>
 <li><p>交换From Space和To Space的角色，使To Space成为新的From Space，From Space成为空闲空间。</p>
-<p><img src="/./img%5C8.4.png"></p>
+<p><img src="/./img/8.4.png"></p>
 </li>
 </ol>
 <h5 id="3-优缺点-3"><a href="#3-优缺点-3" class="headerlink" title="3.优缺点"></a>3.优缺点</h5><ul>
@@ -695,7 +695,7 @@
 <li>Minor GC（新生代垃圾回收）是指针对新生代内存区域进行的垃圾回收，新生代内存区域通常是指年轻代和幸存者代。</li>
 <li>Full GC（老年代垃圾回收）是指针对整个堆内存进行的垃圾回收。堆内存通常是指整个Java虚拟机中的内存区域，包括新生代和老年代。</li>
 </ul>
-<h5 id="2-作用-3"><a href="#2-作用-3" class="headerlink" title="2.作用"></a>2.作用</h5><p><img src="/./img%5C8.5.png"></p>
+<h5 id="2-作用-3"><a href="#2-作用-3" class="headerlink" title="2.作用"></a>2.作用</h5><p><img src="/./img/8.5.png"></p>
 <ul>
 <li><p>对象首先分配在伊甸园区域</p>
 <p>当一个大对象内存大于伊甸园的内存时，就直接进入老年代</p>
@@ -756,14 +756,14 @@
 <h2 id="4-垃圾回收器"><a href="#4-垃圾回收器" class="headerlink" title="4.垃圾回收器"></a>4.垃圾回收器</h2><h4 id="4-1-串行回收器"><a href="#4-1-串行回收器" class="headerlink" title="4.1.串行回收器"></a>4.1.串行回收器</h4><h5 id="1-单线程"><a href="#1-单线程" class="headerlink" title="1.单线程"></a>1.单线程</h5><h5 id="2-堆内存较小，适合个人电脑"><a href="#2-堆内存较小，适合个人电脑" class="headerlink" title="2.堆内存较小，适合个人电脑"></a>2.堆内存较小，适合个人电脑</h5><p><strong>serial、Serial old收集器</strong>（Hotspot中Client模式下默认的新生代垃圾收集器）</p>
 <p><strong>算法：复制算法、串行回收和”Stop The World”机制的方式执行内存回收</strong></p>
 <p>​			<strong>除新生代之外，Serial还提供用于老年代垃圾回收的Serial Old收集器。Serial Old同样采用了串行回收和”Stop The World”，只不过内存回收算法使用的是标记-压缩算法</strong></p>
-<p><img src="/./img%5Ca1.png"></p>
+<p><img src="/./img/a1.png"></p>
 <h4 id="4-2-并行回收器"><a href="#4-2-并行回收器" class="headerlink" title="4.2.并行回收器"></a>4.2.并行回收器</h4><h5 id="1-多线程"><a href="#1-多线程" class="headerlink" title="1.多线程"></a>1.多线程</h5><h5 id="2-堆内存较大，多核cpu"><a href="#2-堆内存较大，多核cpu" class="headerlink" title="2.堆内存较大，多核cpu"></a>2.堆内存较大，多核cpu</h5><h5 id="3-单位时间内，stw时间最短"><a href="#3-单位时间内，stw时间最短" class="headerlink" title="3.单位时间内，stw时间最短"></a>3.单位时间内，stw时间最短</h5><p><strong>Parallel收集器</strong>(jdk8默认使用)、ParNew、Parallel scavenge、Parallel old</p>
 <p><strong>算法：复制算法、并行回收、”Stop The World”</strong></p>
 <p>​	<strong>Parallel在JDK1.6提供了用于执行老年代的Parallel Old，用来代替Serial Old<br>​	Parallel Old采用了标记-压缩算法，但同样是基于并行回收、”Stop The World”</strong></p>
 <p><strong>目标：是达到一个可控制的吞吐量，也被称为吞吐量优先的垃圾回收器</strong><br>           <strong>自适应调节策略也是Parallel Scavenge和ParNew的区别</strong></p>
 <p>高吞吐量则可以高效率的利用CPU时间，尽快完成程序的运算任务，主要适合在后台运算而不需要太多交互的任务。因此，常见在服务器环境中使用。例如：执行<strong>批量处理、订单处理、工资支付、科学计算</strong>的应用程序</p>
 <h5 id=""><a href="#" class="headerlink" title=""></a></h5><p>-XX:+UseParallelGC~-XX:+UseParalleloldGc</p>
-<p><img src="/./img%5Cb1.png"></p>
+<p><img src="/./img/b1.png"></p>
 <h4 id="4-3-并发回收器"><a href="#4-3-并发回收器" class="headerlink" title="4.3.并发回收器"></a>4.3.并发回收器</h4><h5 id="1-多线程-1"><a href="#1-多线程-1" class="headerlink" title="1.多线程"></a>1.多线程</h5><h5 id="2-堆内存较大，多核cpu-1"><a href="#2-堆内存较大，多核cpu-1" class="headerlink" title="2.堆内存较大，多核cpu"></a>2.堆内存较大，多核cpu</h5><h5 id="3-尽可能让单次的stw时间最短"><a href="#3-尽可能让单次的stw时间最短" class="headerlink" title="3.尽可能让单次的stw时间最短"></a>3.尽可能让单次的stw时间最短</h5><h5 id="4-3-1-CMS收集器"><a href="#4-3-1-CMS收集器" class="headerlink" title="4.3.1.CMS收集器"></a>4.3.1.CMS收集器</h5><p><strong>算法：CMS采用标记-清除算法，也会有STW</strong></p>
 <p><strong>目的：尽可能缩短垃圾回收时用户线程的停顿时间。停顿时间越短就越适合与用户交互的程序，良好的响应速度能提升用户体验</strong></p>
 <p>过程：</p>
@@ -774,8 +774,8 @@
 <li>并发清除(Concurrent-Sweep)：清理删除掉标记阶段判断的已经死亡的对象，释放内存空间。由于不需要移动存活对象，所以这个阶段也是可以与用户线程并发的</li>
 </ol>
 <h6 id="-1"><a href="#-1" class="headerlink" title=""></a></h6><p>-XX:+UseConcMarkSweepGC~ -XX :+UseParNewGC ~ Serialold</p>
-<p><img src="/./img%5Cc1.png"></p>
-<h5 id="4-3-2-G1"><a href="#4-3-2-G1" class="headerlink" title="4.3.2.G1"></a>4.3.2.G1</h5><p><img src="/./img%5Cd1.png"></p>
+<p><img src="/./img/c1.png"></p>
+<h5 id="4-3-2-G1"><a href="#4-3-2-G1" class="headerlink" title="4.3.2.G1"></a>4.3.2.G1</h5><p><img src="/./img/d1.png"></p>
 <h6 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h6><p>   G1（Garbage First）收集器是 JDK7 提供的一个新收集器，在 JDK9 中更被指定为官方GC收集器，与CMS收集器相比，最突出的改进是：</p>
 <blockquote>
 <ul>
@@ -809,7 +809,7 @@
 <li>缺点，例如在回收大对象时的性能可能不如其他垃圾回收器。</li>
 </ul>
 <h6 id="相关JVM参数"><a href="#相关JVM参数" class="headerlink" title="相关JVM参数"></a>相关JVM参数</h6><p>-XX : +UseG1GC<br>-XX:G1HeapRegionsize=size|<br>-XX:MaxGCPauseMillis=time</p>
-<h4 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h4><p><img src="/./img%5C12.png"></p>
+<h4 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h4><p><img src="/./img/12.png"></p>
 <p>最小化地使用内存和并行开销，请选serial GC;</p>
 <p>最大化应用程序的吞吐量，请选Parallel GC;</p>
 <p>最小化Gc的中断或停顿时间，请选CMs GC。</p>
