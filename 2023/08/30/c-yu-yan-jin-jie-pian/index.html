@@ -693,7 +693,7 @@
 <span class="token punctuation">}</span>`<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>结果为8。</p>
-<p><img src="/./img/1685427766651.png"></p>
+<p><img src="/././imgc/1685427766651.png"></p>
 <p>以上为student结构体在内存的情况，0-3为整型类型num的存储空间，4-7为char类型sex的存储空间。</p>
 <h2 id="共用体的简单介绍"><a href="#共用体的简单介绍" class="headerlink" title="共用体的简单介绍"></a>共用体的简单介绍</h2><p>上述结构体所占内存可见非常废内存，char类型占用1个字节就占一个字节，为什么占用4个字节，所以共用体就比较节约内存了。<strong>共用体内存看所占内存最大的那个类型。其他类型共用它的内存。</strong></p>
 <p>共用体的定义和结构体的定义差不多，结构体定义所用的关键字为struct，共用体的定义所用关键字为union。所以以下仅对共用体所占内存进行描述。</p>
@@ -718,7 +718,7 @@
 <p>a</p>
 <p>a</p>
 <p>1。</p>
-<p><img src="/./img/1685428496266.png" alt="1685428496266"></p>
+<p><img src="/././imgc/1685428496266.png" alt="1685428496266"></p>
 <p>以上为共用体的占用内存情况，uni和sex，因为uni和sex都仅占一个内存，所以赋值进行的覆盖，先赋值b，如何赋值a，但共用一个内存，所以a覆盖了b。</p>
 <h2 id="枚举的介绍"><a href="#枚举的介绍" class="headerlink" title="枚举的介绍"></a>枚举的介绍</h2><p>之前介绍了结构体和共用体，结构体的关键字为struct，共用体的关键字为union，而枚举定义的关键字为enum。枚举类型简化了#define定义多个值的操作</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
@@ -937,7 +937,7 @@
 <p>输出结果为</p>
 <p>5<br>000000000062FE08<br>000000000062FE14<br>000000000062FE14<br>5</p>
 <h2 id="链表的介绍"><a href="#链表的介绍" class="headerlink" title="链表的介绍"></a>链表的介绍</h2><p>理解为一种思想，用结构体指针来实现的，结构体中的成员包括数据和结构体指针，结构体中的结构体指针指向的是下个结构体的地址，即用结构体中的结构体指针来链接各个结构体，整体称谓链表，那么有了链表就需要一个头指针来输出他，可以理解链表是多米诺骨牌，牌已经摆好了，只用推一下这个链表就展现到你眼前了，而这个推一下的动作就是头指针，</p>
-<p><img src="/./img/1685508777711.png" alt="1685508777711"></p>
+<p><img src="/././imgc/1685508777711.png" alt="1685508777711"></p>
 <h3 id="第一种静态链表的介绍与实现"><a href="#第一种静态链表的介绍与实现" class="headerlink" title="第一种静态链表的介绍与实现"></a>第一种静态链表的介绍与实现</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
 
 <span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">student</span>
@@ -1078,7 +1078,7 @@
 <p>#else</p>
 <p>…</p>
 <p>如果N为真执行#if和#else之间的语句，否则执行#else之后的语句</p>
-<h3 id="写过的题目"><a href="#写过的题目" class="headerlink" title="写过的题目"></a>写过的题目</h3><h4 id="一-链表的反转"><a href="#一-链表的反转" class="headerlink" title="一.链表的反转"></a>一.链表的反转</h4><p><img src="/./img/1685792379205.png" alt="1685792379205"></p>
+<h3 id="写过的题目"><a href="#写过的题目" class="headerlink" title="写过的题目"></a>写过的题目</h3><h4 id="一-链表的反转"><a href="#一-链表的反转" class="headerlink" title="一.链表的反转"></a>一.链表的反转</h4><p><img src="/././imgc/1685792379205.png" alt="1685792379205"></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
 <span class="token keyword">struct</span> <span class="token class-name">ListNode</span>
 <span class="token punctuation">{</span>
@@ -1123,7 +1123,7 @@
 <p>本题用了两个指针，q和p分别指向头结点的前两个结点，可以说头节点带着q和p去找链表的结点，p改变结点的指向，</p>
 <p>q保存了被指向的结点。</p>
 <p>输出结果为321</p>
-<h4 id="二-链表的合并"><a href="#二-链表的合并" class="headerlink" title="二.链表的合并"></a>二.链表的合并</h4><p><img src="/./img/1685875845805.png" alt="1685875845805"></p>
+<h4 id="二-链表的合并"><a href="#二-链表的合并" class="headerlink" title="二.链表的合并"></a>二.链表的合并</h4><p><img src="/././imgc/1685875845805.png" alt="1685875845805"></p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">/**
  * Definition for singly-linked list.
  * struct ListNode {
