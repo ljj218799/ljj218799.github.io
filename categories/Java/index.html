@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: – C语言, Welcome to my blog">
+    <meta name="keywords" content="分类: Java, Welcome to my blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>分类: – C语言 | Welcome to my blog</title>
+    <title>分类: Java | Welcome to my blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -450,28 +450,37 @@
                 
                 
                 
-                <a href="/categories/%E2%80%93-Java/" title="– Java: 3">
+                <a href="/categories/Java/" title="Java: 3">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">– Java
+                             chip-active "
+                            style="background-color: #F9EBEA;">Java
                         <span class="tag-length">3</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E2%80%93-C/" title="– C++: 2">
+                <a href="/categories/Linux/" title="Linux: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">– C++
+                            style="background-color: #F5EEF8;">Linux
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/C/" title="C++: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">C++
                         <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/%E2%80%93-C%E8%AF%AD%E8%A8%80/" title="– C语言: 1">
+                <a href="/categories/C%E8%AF%AD%E8%A8%80/" title="C语言: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            style="background-color: #D5F5E3;">– C语言
+                             chip-default "
+                            style="background-color: #E8F8F5;">C语言
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -490,28 +499,20 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/30/c-yu-yan-jin-jie-pian/">
+                    <a href="/2023/08/30/jvm-la-ji-hui-shou/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="C语言进阶篇">
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="JVM垃圾回收">
                             
-                            <span class="card-title">C语言进阶篇</span>
+                            <span class="card-title">JVM垃圾回收</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                C语言进阶篇本文是对
-文章进行的学习总结
-结构体的介绍结构体的定义第一种直接struct 加结构体名定义struct  结构体名
-{ 
-类型 属性名；
-类型 属性名；
-….
-类型 属性名；
-}
-#include &lt;stdio.h&gt
+                                三、垃圾回收1.如何判断对象可以回收1.1.引用计数器1.定义
+垃圾回收引用计数法（Reference Counting Garbage Collection）是一种常用的垃圾回收算法，它的基本思想是对每个对象记录它的引用计数，当引用计数为
                             
                         </div>
                         <div class="publish-info">
@@ -522,8 +523,8 @@
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E2%80%93-C%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    – C语言
+                                <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                                 
                                 
@@ -534,16 +535,113 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/C%E8%AF%AD%E8%A8%80/">
-                            <span class="chip bg-color">C语言</span>
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
                         </a>
                         
-                        <a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/">
-                            <span class="chip bg-color">结构体</span>
+                        <a href="/tags/jvm/">
+                            <span class="chip bg-color">jvm</span>
                         </a>
                         
-                        <a href="/tags/%E6%8C%87%E9%92%88/">
-                            <span class="chip bg-color">指针</span>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/08/30/jvm-nei-cun-jie-gou/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="JVM的内存结构">
+                            
+                            <span class="card-title">JVM的内存结构</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                二、内存结构1.程序计数器1.1.定义
+JVM程序计数器的英文全称是Program Counter Register，又叫程序计数寄存器。Register的命名源于CPU的寄存器，寄存器存储指令相关的现场信息。CPU只有把数据装载到寄存器才
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-30
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                        <a href="/tags/jvm/">
+                            <span class="chip bg-color">jvm</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/08/30/jvm-ji-ben-gai-nian/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JVM基本概念">
+                            
+                            <span class="card-title">JVM基本概念</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                一、基本概念一、什么是 JVM？JVM（Java Virtual Machine）是一个可以在任何平台上运行的虚拟计算机，它是 Java 平台的核心组件之一，负责将 Java 代码编译成字节码并在运行时将字节码转换成机器码执行。二、JVM 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-30
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/java/">
+                            <span class="chip bg-color">java</span>
+                        </a>
+                        
+                        <a href="/tags/jvm/">
+                            <span class="chip bg-color">jvm</span>
                         </a>
                         
                     </div>
