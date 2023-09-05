@@ -679,7 +679,8 @@
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>A注入到C又需要从第三级缓存中获取实例，而第三级缓存里保存的并非真正的实例对象，而是**(lambda表达式)ObjectFactory<strong>对象。两次从三级缓存中获取都是</strong>ObjectFactory<strong>对象，而</strong>通过它创建的实例对象每次可能都不一样的**。</p>
+<p>A注入到C又需要从第三级缓存中获取实例，而第三级缓存里保存的并非真正的实例对象，而是**(lambda表达式)ObjectFactory**对象。</p>
+<p>两次从三级缓存中获取都是<strong>ObjectFactory</strong>对象，而<strong>通过它创建的实例对象每次可能都不一样的</strong>。</p>
 <p>为了解决这个问题，spring引入的第二级缓存。只用从第二级缓存中获取该对象即可.</p>
 <h4 id="3-2-是否需要三级缓存"><a href="#3-2-是否需要三级缓存" class="headerlink" title="3.2.是否需要三级缓存"></a>3.2.是否需要三级缓存</h4><ol>
 <li><p>如果没有代理，是可以不需要三级缓存。</p>
