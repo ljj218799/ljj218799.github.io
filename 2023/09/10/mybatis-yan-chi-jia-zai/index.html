@@ -439,10 +439,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="MyBatis-延迟加载"><a href="#MyBatis-延迟加载" class="headerlink" title="MyBatis 延迟加载"></a>MyBatis 延迟加载</h2><h4 id="1-什么是延迟加载"><a href="#1-什么是延迟加载" class="headerlink" title="1.什么是延迟加载"></a>1.什么是延迟加载</h4><p>简单的来说就是，<strong>在需要用到数据的时候进行加载，不需要用到数据就不进行加载</strong></p>
+                <h2 id="MyBatis-延迟加载"><a href="#MyBatis-延迟加载" class="headerlink" title="MyBatis 延迟加载"></a>MyBatis 延迟加载</h2><h3 id="1-什么是延迟加载"><a href="#1-什么是延迟加载" class="headerlink" title="1.什么是延迟加载"></a>1.什么是延迟加载</h3><p>简单的来说就是，<strong>在需要用到数据的时候进行加载，不需要用到数据就不进行加载</strong></p>
 <p>假设数据库中涉及两张表，用户表AND订单表（一对多的关系），假设一个有很多订单，那么在查询用户的时候，需不需要当前用户关联的订单数据查询出来？</p>
 <p>通常来说查询用户信息的时候，肯定是<strong>在需要用到用户订单的时候在查询为好</strong>，尤其是一对多的多表查询，通常都建议采用延迟加载，因为单表查询肯定要比多表关联查询速度要快，<strong>先从单表查询，接着需要时在关联表进行关联查询，会提高数据库性能</strong></p>
-<h4 id="2-如何使用"><a href="#2-如何使用" class="headerlink" title="2.如何使用"></a>2.如何使用</h4><p>MyBatis默认不启用延迟加载，启用延迟加载则需要我们进行一配置即可。</p>
+<h3 id="2-如何使用"><a href="#2-如何使用" class="headerlink" title="2.如何使用"></a>2.如何使用</h3><p>MyBatis默认不启用延迟加载，启用延迟加载则需要我们进行一配置即可。</p>
 <p>配置文件中设置setting属性 设置<strong>全局懒加载</strong></p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span><span class="token punctuation">&gt;</span></span>
        <span class="token comment">&lt;!-- 开启全局延迟加载,默认值是true --&gt;</span>
@@ -506,7 +506,7 @@ where uid <span class="token operator">=</span> #<span class="token punctuation"
 
 <p><img src="/././imgc/65.png"></p>
 <p>可以发现user.getUsername()的时候只触发了查询用户的sql语句，而user.getOrderList()时才触发了查询订单的sql语句,延迟加载生效。</p>
-<h4 id="3-原理解析"><a href="#3-原理解析" class="headerlink" title="3.原理解析"></a>3.原理解析</h4><p>了解一下SQL语句执行的大致流程：</p>
+<h3 id="3-原理解析"><a href="#3-原理解析" class="headerlink" title="3.原理解析"></a>3.原理解析</h3><p>了解一下SQL语句执行的大致流程：</p>
 <p>SQL查询语句的执行是由SqlSession分发交由Executor托管执行，调StatementHandler负责JDBC statement操作，之后下发给ParameterHandler负责对用户传递参数进行转化处理SQL参数，再接着执行SQL语句，最后通过ResultSetHandler对返回结果进行封装处理返回。</p>
 <p><strong>基本原理：</strong></p>
 <p><strong>通过最后的ResultSetHandler对结果封装处理返回的时候，根据调用的getting方法的实例名称，来相对应的加载目标对象，使用CGLIB创建目标对象的代理对象，当调用目标方法时，进入拦截器方法</strong>，将启用了延迟加载并且是getting方法，那么执行load加载（就是去执行一次SQL查询方法将结果set到代理对象中）</p>
