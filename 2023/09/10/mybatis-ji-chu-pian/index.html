@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="C++基本篇, Welcome to my blog">
+    <meta name="keywords" content="MyBatis 基础篇, Welcome to my blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>C++基本篇 | Welcome to my blog</title>
+    <title>MyBatis 基础篇 | Welcome to my blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -250,12 +250,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">C++基本篇</h1>
+                    <h1 class="description center-align post-title">MyBatis 基础篇</h1>
                 </div>
             </div>
         </div>
@@ -371,8 +371,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C/">
-                                <span class="chip bg-color">C++</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/MyBatis/">
+                                <span class="chip bg-color">MyBatis</span>
                             </a>
                         
                     </div>
@@ -383,8 +387,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/C/" class="post-category">
-                                C++
+                            <a href="/categories/MyBatis/" class="post-category">
+                                MyBatis
                             </a>
                         
                     </div>
@@ -396,7 +400,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-30
+                    2023-09-10
                 </div>
                 
 
@@ -405,14 +409,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    13 分
                 </div>
                 
 
@@ -435,187 +439,228 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>C++学习（进阶加基础）</p>
-<p>本文笔记链接</p>
-<h2 id="C-基础"><a href="#C-基础" class="headerlink" title="C++基础"></a>C++基础</h2><h3 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h3><p>C++有自己的头文件，例如iostream 没有.h<br>也可以用C的头文件 例如stdio.h 有.h<br>或者将C文件C++化 例如<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=cstdio&amp;spm=1001.2101.3001.7020">cstdio</a> 前面加c没有.h</p>
-<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>1.划分逻辑单元。避免名字冲突，</p>
-<p>2.同名的命名空间可以合并，有时候一个名字空间太冗余或者其他原因需要分开实现在不同地方，</p>
-<p>3.声明和定义分开，在命名空间中声明的函数，定义时要加：：作用域限定符。</p>
-<p>4.命名空间可以嵌套，调用时则用a：：b：：要调用的对象。</p>
-<p>5.using namespace 名字空间名<br>使用后该名字空间对于当前作用域可见，可以不再使用作用域限定符，一旦使用，不可再隐藏。<br>std名字空间全局可见。std标准库定义名字空间。</p>
-<h3 id="：：作用域限定符"><a href="#：：作用域限定符" class="headerlink" title="：：作用域限定符"></a>：：作用域限定符</h3><p>表示：：后面的内容属于：：前面。翻译成中文就是 的<br>如果：：前面没有内容表示全局</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-using namespace std;
-namespace a
-{
-    char name = 'a';
-    void eat()
-    {
-        cout &lt;&lt; "吃饭" &lt;&lt; endl;
-    }
-}
-namespace b
-{
-    char name = 'a';
-    void eat()
-    {
-        cout &lt;&lt; "喝水" &lt;&lt; endl;
-    }
-}
-int main()
-{
-    a::eat();
-    b::eat();
-    return 0;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>输出结果</p>
-<p>吃饭<br>喝水</p>
-<h3 id="bool类型"><a href="#bool类型" class="headerlink" title="bool类型"></a>bool类型</h3><ul>
-<li>true表示真 单字节整数1</li>
-<li>false表示假 单字节整数0</li>
+                <h2 id="MyBatis-基础篇"><a href="#MyBatis-基础篇" class="headerlink" title="MyBatis 基础篇"></a>MyBatis 基础篇</h2><h3 id="1-MyBatis概述"><a href="#1-MyBatis概述" class="headerlink" title="1.MyBatis概述"></a>1.MyBatis概述</h3><h4 id="1-1-什么是Mybatis"><a href="#1-1-什么是Mybatis" class="headerlink" title="1.1.什么是Mybatis"></a>1.1.什么是Mybatis</h4><ul>
+<li>Mybatis是一个半<strong>ORM</strong>（对象关系映射）框架，它内部<strong>封装了JDBC</strong>，开发时只需要关注SQL语句本身，不需要花费精力去处理加载驱动、创建连接、创建statement等繁杂的过程。</li>
+<li>MyBatis 可以使用 <strong>XML 或注解来配置和映射原生信息</strong>，将 POJO映射成数据库中的记录，避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。 </li>
+<li>通过xml 文件或注解的方式将要执行的各种 statement 配置起来，并通过java对象和statement中sql的动态参数进行映射生成最终执行的sql语句，最后由mybatis框架<strong>执行sql并将结果映射为java对象并返回（从执行sql到返回result的过程）。</strong></li>
 </ul>
-<p>boolalpha bool类型使用字符输出<br>noboolalpha bool关闭字符输出，数值输出</p>
-<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
-using namespace std<span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-
-    bool b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> boolalpha <span class="token operator">&lt;&lt;</span> <span class="token string">"字符输出"</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> endl
-         <span class="token operator">&lt;&lt;</span> noboolalpha <span class="token operator">&lt;&lt;</span> <span class="token string">"数值输出"</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> endl
-         <span class="token operator">&lt;&lt;</span> <span class="token string">"内存大小"</span> <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>输出结果为</p>
-<p>字符输出true<br>数值输出1<br>内存大小1</p>
-<h3 id="内联"><a href="#内联" class="headerlink" title="内联"></a>内联</h3><ul>
-<li>用函数已被编译好的二进制代码，替换对该函数的调用指令。提高效率，避免函数调用开销。</li>
-<li><strong>使用inline关键字期望该函数被优化为内联，是否内联由编译器决定</strong>。</li>
-<li>内联会使可执行文件内存变大，只有频繁调用的简单函数适合内联。复杂函数和递归函数都不适合内联。</li>
-</ul>
-<h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3><p>同一作用域中，函数名相同，参数表不同的函数。重载和返回值和参数名没有关系。</p>
-<blockquote>
-<p>函数作用域不是定义决定的，是声明决定的。</p>
-</blockquote>
-<blockquote>
-<p>重载是编译器通过换名实现，<br>在linux下 用gcc -c 获取.o 使用nm .o文件查看<br>在windows下查看obj文件，或者不定义函数，只声明和使用<br>通过extern “C”可以要求C++编译器按照C方式处理函数接口</p>
-</blockquote>
-<h4 id="缺省参数和哑元"><a href="#缺省参数和哑元" class="headerlink" title="缺省参数和哑元"></a>缺省参数和哑元</h4><p>为函数指定缺省值，调用时若未指定实参，则对应的形参取缺省值</p>
-<h4 id="缺省参数的特点"><a href="#缺省参数的特点" class="headerlink" title="缺省参数的特点"></a>缺省参数的特点</h4><ol>
-<li>最好在函数声明中指定。可以利用声明改缺省值。</li>
-<li>禁止在声明和定义同时指定缺省参数。可能不一致，编译器禁止</li>
-<li>缺省参数只能在最后，即你某个参数指定为缺省参数，后面所有参数都要有缺省值</li>
-<li>不要因为是用缺省参数导致重载歧义</li>
+<p><strong>ORM:</strong></p>
+<p>ORM（Object Relational Mapping），对象关系映射是一种为了解决关系型数据库数据与简单Java对 象（POJO）的映射关系的技术。简单的说，ORM是通过使用描述对象和数据库之间映射的元数据，<strong>将程序中的对象自动持久化到关系型数据库中</strong>。</p>
+<p><strong>半ORM:</strong></p>
+<p>Mybatis在<strong>查询关联对象或关联集合对象时，需要手动编写sql来完成</strong>，所以，称之为半自动ORM映射工具。使用Hibernate查询关联对象或者关联集合对象时，可以根据对象关系模型直接获取，所以它是全自动的。  </p>
+<h4 id="1-2-为什么是Mybaits"><a href="#1-2-为什么是Mybaits" class="headerlink" title="1.2. 为什么是Mybaits"></a>1.2. 为什么是Mybaits</h4><ol>
+<li>基于SQL语句编程，相当灵活，不会对应用程序或者数据库的现有设计造成任何影响，SQL写在XML里，解除sql与程序代码的耦合，便于统一管理；提供XML标签，支持编写动态SQL语句，并可重用。 </li>
+<li>与JDBC相比，减少了50%以上的代码量，消除了JDBC大量冗余的代码，不需要手动开关连接； </li>
+<li>很好的与各种数据库兼容（因为MyBatis使用JDBC来连接数据库，所以只要JDBC支持的数据库MyBatis都支持）。 </li>
+<li>能够与Spring很好的集成； </li>
+<li>提供映射标签，支持对象与数据库的ORM字段关系映射；提供对象关系映射标签，支持对象关系组件维护。</li>
 </ol>
-<p>只指定类型而不指定名称的函数参数，叫做哑元。<br>使用哑元1.兼容之前版本。二.形成函数重载</p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>引用（reference）是c++对c语言的重要扩充。<br>引用就是某一变量（内存）的一个别名，对引用的操作与对变量直接操作完全一样。其格式为：<br>类型 &amp;引用变量名 = 已定义过的变量名。</p>
-<p>&amp;符号：跟在类型后是引用，没有类型是取地址<br>*符号：跟在类型后是指针，没有类型是解引用</p>
-<h4 id="引用的特点"><a href="#引用的特点" class="headerlink" title="引用的特点"></a>引用的特点</h4><ul>
-<li>一个变量可取多个别名。</li>
-<li>引用必须初始化，不能为空。</li>
-<li>引用只能在初始化的时候引用一次 ，不能更改为转而引用其他变量</li>
+<p> <strong>JDBC编程有哪些不足之处，MyBatis是如何解决的：</strong></p>
+<p>1、<strong>数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能</strong>，如果使用数据库连接池可解决此题。<br>解决：<strong>在mybatis-config.xml中配置数据链接池，使用连接池管理数据库连接。</strong></p>
+<p>2、<strong>Sql语句写在代码中造成代码不易维护</strong>，实际应用sql变化的可能较大，sql变动需要改变java代码。<br>解决：<strong>将Sql语句配置在XXXXmapper.xml文件中与java代码分离。</strong></p>
+<p>3、<strong>向sql语句传参数麻烦</strong>，因为sql语句的where条件不一定，可能多也可能少，占位符需要和参数一一<br>对应。<br>解决： <strong>Mybatis自动将java对象映射至sql语句。</strong></p>
+<p>4、<strong>对结果集解析麻烦</strong>，sql变化导致解析代码变化，且解析前需要遍历，如果能将数据库记录封装成pojo对象解析比较方便。<br>解决：<strong>Mybatis自动将sql执行结果映射至java对象。</strong></p>
+<h4 id="1-3-Mybatis功能架构"><a href="#1-3-Mybatis功能架构" class="headerlink" title="1.3.Mybatis功能架构"></a>1.3.Mybatis功能架构</h4><p>Mybatis的功能架构分为三层： </p>
+<p><img src="/././imgc/60.png"></p>
+<ul>
+<li><strong>API接口层</strong>：提供给外部使用的接口API，开发人员通过这些本地API来操纵数据库。接口层一接收到调用请求就会调用数据处理层来完成具体的数据处理。 </li>
+<li><strong>数据处理层</strong>：负责具体的SQL查找、SQL解析、SQL执行和执行结果映射处理等。它主要的目的是根据调用的请求完成一次数据库操作。 </li>
+<li><strong>基础支撑层</strong>：负责最基础的功能支撑，包括连接管理、事务管理、配置加载和缓存处理，这些都是共用的东西，将他们抽取出来作为最基础的组件。为上层的数据处理层提供最基础的支撑。</li>
 </ul>
-<h4 id="const引用"><a href="#const引用" class="headerlink" title="const引用"></a>const引用</h4><p>引用变量和被引用的变量虽然是同一个变量，但是可以被不同修饰符修饰</p>
-<h4 id="引用做参数"><a href="#引用做参数" class="headerlink" title="引用做参数"></a>引用做参数</h4><ul>
-<li>节省空间+提高效率</li>
-<li>值传递，形参生成局部临时变量接收实参的值。</li>
-<li>引用传递，形参是实参的别名</li>
-<li>指针传递，传入实参的地址，指针通过地址访问修改值</li>
+<p><strong>主要组件及其关系：</strong></p>
+<p><img src="/././imgc/66.png"></p>
+<ul>
+<li><strong>SqlSession</strong>：作为MyBatis⼯作的主要顶层API，表示和数据库交互的会话，完成必要数 据库增删改查功能。</li>
+<li><strong>Executor</strong>：调度执行StatementHandler、ParameterHandler、ResultHandler执行相应的SQL语句</li>
+<li><strong>StatementHandler</strong>：封装了JDBC Statement操作，负责对JDBC statement的操作，如设置参数、将Statement结果集转换成List集合。</li>
+<li><strong>ParameterHandler</strong>：负责对用户传递的参数转换成JDBC Statement所需要的参数。处理SQL参数。</li>
+<li><strong>ResultSetHandler</strong>：结果集ResultSet封装处理返回。</li>
+<li><strong>TypeHandler</strong>：负责java数据类型和jdbc数据类型之间的映射和转换。</li>
+<li><strong>MappedStatement</strong>：MappedStatement维护了⼀条＜select | update | delete | insert＞节点的封装。</li>
+<li><strong>SqlSource</strong>：负责根据用户传递的parameterObject，动态地生成SQL语句，将信息封装到BoundSql对象中，并返回。</li>
+<li><strong>BoundSql</strong>：表示动态生成的SQL语句以及相应的参数信息。</li>
 </ul>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-using namespace std;
-void fun1(int a)
-{
-    a += 1;
-}
+<p><strong>Dao 接口，就是Mapper 接口，接口的全限名，就是映射文件中的 namespace 的值，接口的方法名，就是映射文件中 MappedStatement 的 id 值，接口方法内的参数，就是传递给 sql 的参数。</strong> </p>
+<p>Mapper 接口是没有实现类的，当调用接口方法时，接口全限名+方法名拼接字符串作为 key 值，可唯一定位一个 MappedStatement </p>
+<p>在 MyBatis 中，每一个 <select> 、  、  、  标签，都会被解析为一个 MappedStatement 对象。
+执行SQL语句的大致流程为：
 
-void fun2(int &amp;a)
-{
-    a += 1;
-}
-void fun3(int *a)
-{
-    *a += 1;
-}
-int main()
-{
-    int a = 10;
-    fun1(a);
-    cout &lt;&lt; a &lt;&lt; endl;
-    fun2(a);
-    cout &lt;&lt; a &lt;&lt; endl;
-    fun3(&amp;a);
-    cout &lt;&lt; a &lt;&lt; endl;
-    return 0;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+加载配置，以XML为例，将主配置文件内容解析到Configuration中，将SQL配置信息加载成为多个MapperdStatement对象，存入内存中。
+接口层调用MyBatis提供的API 传入参数对象，将请求传递给下层的数据处理层进行处理。
+简单的来说数据处理层完成的任务如下：
+Parameterhandler完成参数映射（参数映射配置，参数映射 类型解析）根据SQL的ID搜寻对应的MappedStatement对象，根据传入的参数对象解析MappedStatement对象，SqlSource做SQL语句解析，动态SQL生成，获取需要执行的SQL语句和执行必要参数。
+Executor执行SQL语句，获取数据库连接，根据得到的最终SQL语句和执行传入参数到数据库执行，并得到执行结果。
+根据MappedStatement对象中的结果映射配置对得到的执行结果ResultSetHandler进行转换处理，并得到最终的处理结果。释放连接资源。最终将ResultSet结果集逐层返回。
 
-<p>输出结果为</p>
-<p>10<br>11<br>12</p>
-<h4 id="引用做函数返回值"><a href="#引用做函数返回值" class="headerlink" title="引用做函数返回值"></a>引用做函数返回值</h4><p>当引用做函数的返回值时: 函数可以放在赋值语句的左边(可以当左值)</p>
-<p>实现了动态引用</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-using namespace std;
-int &amp;fun1(int &amp;a)
-{
-    return a;
-}
-int main()
-{
-    int b;
-    int c = 3;
-    int d = 4;
-    fun1(b) = c;
-    cout &lt;&lt; b &lt;&lt; endl;
-    fun1(b) = d;
-    cout &lt;&lt; b &lt;&lt; endl;
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>输出结果为</p>
-<p>3<br>4</p>
-<h3 id="动态分配-内存池"><a href="#动态分配-内存池" class="headerlink" title="动态分配+内存池"></a>动态分配+内存池</h3><h4 id="动态分配"><a href="#动态分配" class="headerlink" title="动态分配"></a>动态分配</h4><p>C语言使用malloc来动态分配内存空间，free释放内存空间，C++使用new和delete来创建和释放内存空间</p>
-<p>在分配内存的同时初始化 int *p=new int(100);表示 *p的值为100；数组方式new的需要以数组方式delete</p>
-<p>int *p = new int[2]{4, 2};  delete [ ]p;</p>
-<h4 id="内存池"><a href="#内存池" class="headerlink" title="内存池"></a>内存池</h4><p>预先分配好，放到进程空间的内存块，用户申请与释放内存其实都是在进程内进行,遇到小对象时就是基于内存池的。只有当内存池空间不够时，才会再从系统找一块很大的内存</p>
-<h3 id="引用和指针的区别和联系"><a href="#引用和指针的区别和联系" class="headerlink" title="引用和指针的区别和联系"></a>引用和指针的区别和联系</h3><p>两者都是地址的概念<br>指针指向一块内存，其内容为所指内存的地址；<br>引用是某块儿内存的别名。</p>
-<p>1.指针是一个实体，而引用仅是个别名；<br>2.引用使用时无需解引用(*)，指针需要解引用；<br>3.引用只能在定义时被初始化一次，之后不可变；指针可变；<br>4.引用没有 const，指针有 const；const修饰的指针不可变；<br>5.引用不能为空，指针可以为空；<br>6.“sizeof 引用”得到的是所指向的变量(对象)的大小，而“sizeof 指针”得到的是指针本身(所指向的变量或对象的地址)的大小；<br>7.指针和引用的自增(++)运算意义不一样；<br>8.从内存分配上看：程序为指针变量分配内存区域，而引用不需要分配内存区域。</p>
-<h3 id="new-和delete实现二维数组的动态申请内存"><a href="#new-和delete实现二维数组的动态申请内存" class="headerlink" title="new 和delete实现二维数组的动态申请内存"></a>new 和delete实现二维数组的动态申请内存</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-using namespace std;
-int **arr = NULL;
-int **fun(int a, int b) // 动态分配数组函数
-{
 
-    int i;
-    arr = new int *[a]; // 创建指向一维数组的指针数组
-    for (int i = 0; i &lt; b; i++)
-    {
-        arr[i] = new int[b]; // 为每一个指针数组的值进行赋值
+1.4.Executor执行器Mybatis有三种基本的Executor执行器，SimpleExecutor、ReuseExecutor、BatchExecutor。
+
+SimpleExecutor：简单执行器，每个语句都会创建一个新的PreparedStatement对象，不进行二级缓存。适用于小型应用或对性能要求不高的场景。
+ReuseExecutor：重用执行器，执行器会重用预处理语句（PreparedStatement），可以缓存多个语句的预处理语句，但不支持二级缓存。适用于多次执行相同或类似语句的场景。
+BatchExecutor：批处理执行器，执行器使用JDBC的批处理语句（batch）执行多个语句，可以提高批量操作的性能。适用于批量插入、更新或删除等场景。
+
+如何指定：
+&lt;configuration&gt;
+  &lt;settings&gt;
+    &lt;setting name="defaultExecutorType" value="REUSE"/&gt;
+  &lt;/settings&gt;
+  ...
+&lt;/configuration&gt;
+
+或者
+SqlSession sqlSession = sqlSessionFactory.openSession();
+Configuration configuration = sqlSession.getConfiguration();
+configuration.setDefaultExecutorType(ExecutorType.REUSE);
+
+//或者建SqlSession的方法传递ExecutorType类型参数
+SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.REUSE);
+
+
+
+1.5.与Hibernate的异同相同点 
+都是对jdbc的封装，都是持久层的框架，都用于dao层的开发。 
+不同点 
+映射关系 
+MyBatis 是一个半自动映射的框架，配置Java对象与sql语句执行结果的对应关系，多表关联关系配置简单 
+Hibernate 是一个全表映射的框架，配置Java对象与数据库表的对应关系，多表关联关系配置复杂 
+SQL优化和移植性 
+Hibernate 对SQL语句封装，提供了日志、缓存、级联（级联比 MyBatis 强大）等特性，此外还提供 HQL（Hibernate Query Language）操作数据库，数据库无关性支持好，但会多消耗性能。如果项目需要支持多种数据库，代码开发量少，但SQL语句优化困难。 
+MyBatis 需要手动编写 SQL，支持动态 SQL、处理列表、动态生成表名、支持存储过程。开发工作量相对大些。直接使用SQL语句操作数据库，不支持数据库无关性（SQL语句依赖于数据库，导致数据库移植性差，不能随意更换数据库），但sql语句优化容易。
+2.MyBatis缓存机制2.1.概念
+基本概念：MyBatis包含一个非常强大的查询缓存特性，它可以非常方便地配置和定制。
+
+作用：缓存可以极大的提升查询效率。
+
+分类：MyBatis系统中默认定义了两级缓存，分别是一级缓存和二级缓存。
+
+基本介绍：
+① 默认情况下，只有一级缓存（SqlSession级别的缓存，也称为本地缓存）开启。
+② 二级缓存需要手动开启和配置，他是基于namespace级别的缓存。
+③ 为了提高扩展性，MyBatis定义了缓存接口Cache，我们可以通过实现Cache接口来自定义二级缓存。
+
+
+
+SqlSession：
+
+SqlSession级别的缓存，缓存的数据只在SqlSession内有效
+SqlSession 是 MyBatis 中与数据库进行交互的主要接口。
+作用范围是一次数据库会话，通常，每个数据库操作都应该在一个独立的 SqlSession中进行。
+在一个 SqlSession 中，可以执行多个数据库操作，并且 MyBatis 会自动管理事务的提交和回滚。
+
+Namespace ：
+
+同一个namespace公用这一个缓存，所以对SqlSession是共享的。
+Namespace 是用于组织和管理 SQL 映射语句的概念。
+每个 Mapper 接口都应该有一个对应的 Namespace。
+Namespace 的作用是在 XML 映射文件中定义与该 Mapper 接口相关的 SQL 映射语句。
+通过 Namespace，可以在代码中通过 Mapper 接口的方法来执行对应的 SQL 语句。
+
+2.2.一级缓存基本概念：
+是基于 SqlSession 级别的缓存，也叫本地缓存且是默认开启，因为每个用户在执行查询的时候都需要使用 SqlSession 来执行。
+在应用运行过程中，我们有可能在一次数据库会话中，执行多次查询条件完全相同SQL，MyBatis 提供了一级缓存的方案优化这部分场景，如果是相同的 SQL 语句，会优先命中一级缓存，避免直接对数据库进行查询，提高性能。
+基本原理：
+在每个 SqlSession 中持有了 Executor，每个 Executor 中有一个 LocalCache。
+当用户发起查询时，MyBatis 根据当前执行的语句生成 MappedStatement，在 Local Cache 进行查询，如果缓存命中的话，直接返回结果给用户，如果缓存没有命中的话，查询数据库，结果写入 Local Cache，最后返回结果给用户。具体实现类的类关系图如下图所示： 
+
+所以在多个 Sqlsession 或者分布式环境下， 可能会导致数据库写操作出现脏数据，Mybatis就提供了二级缓存。
+2.3.二级缓存基本概念：
+二级缓存是基于namespace（mapper接口），不同的SQLSession可以访问二级缓存的内容就是当多个用户在查询数据的时候，只要有任何一个 SqlSession 拿到了数据就会放入到二级缓存里面，其他的 SqlSession 就可以从二级缓存加载数据，实现了 SqlSession 之间缓存数据的共享。
+如何开启：
+&lt;configuration&gt;
+  &lt;!-- 其他配置项 --&gt;
+
+  &lt;settings&gt;
+    &lt;setting name="cacheEnabled" value="true"/&gt;
+  &lt;/settings&gt;
+  
+  &lt;!-- 其他配置项 --&gt;
+&lt;/configuration&gt;
+
+开启二级缓存后，还需要在对应的 Mapper 接口上进行配置，才能使该 Mapper 接口的查询结果被缓存。
+&lt;mapper namespace="com.example.mapper.UserMapper"&gt;
+  &lt;cache-ref namespace="com.example.mapper.UserMapper"/&gt;
+  
+  &lt;!-- 其他 SQL 映射配置 --&gt;
+&lt;/mapper&gt;
+
+POJO需要实现序列化接口
+SqlSession对象关闭或提交之后，⼀级缓存中的数据才会被写⼊到⼆级缓存当中
+基本原理：
+使用 CachingExecutor 装饰了 Executor，所以在进入一级缓存的查询流程之前，会先通过 CachingExecutor 进行二级缓存的查询。 
+开启二级缓存以后，会被多个 SqlSession 共享，所以它是一个全局缓存。因此它的查询流程是先查二级缓存，再查一级缓存，最后再查数据库
+
+并且还可以通过 Cache 接口实现类不同的组合，对 Cache 的可控性也更强
+简单的示例代码
+1.需要创建一个实现Cache接口的自定义缓存类
+import org.apache.ibatis.cache.Cache;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class FIFOCache implements Cache {
+    private final String id;
+    private Map&lt;Object, Object&gt; cache;
+
+    public FIFOCache(String id) {
+        this.id = id;
+        this.cache = new LinkedHashMap&lt;&gt;();
     }
-    arr[0][0] = 5;
-    return arr;
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void putObject(Object key, Object value) {
+        cache.put(key, value);
+    }
+
+    @Override
+    public Object getObject(Object key) {
+        return cache.get(key);
+    }
+
+    @Override
+    public Object removeObject(Object key) {
+        return cache.remove(key);
+    }
+
+    @Override
+    public void clear() {
+        cache.clear();
+    }
+
+    @Override
+    public int getSize() {
+        return cache.size();
+    }
 }
 
-int main()
-{
+该类使用了一个LinkedHashMap作为缓存的存储容器，它按照插入顺序维护缓存中的对象。这意味着当缓存空间不足时，最早插入的对象会被移除，以腾出空间给新的对象
+2.在MyBatis的配置文件中配置使用我们的自定义缓存类
+&lt;configuration&gt;
+    &lt;!-- 其他配置项 --&gt;
+    &lt;environments default="development"&gt;
+        &lt;environment id="development"&gt;
+            &lt;transactionManager type="JDBC"&gt;
+                &lt;!-- 事务管理器配置 --&gt;
+            &lt;/transactionManager&gt;
+            &lt;dataSource type="POOLED"&gt;
+                &lt;!-- 数据源配置 --&gt;
+            &lt;/dataSource&gt;
+            
+            &lt;!-- 配置使用自定义缓存类 --&gt;
+            &lt;cache type="com.example.FIFOCache"/&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+&lt;/configuration&gt;
 
-    int **q; // 用来接收函数返回的二维数组的头地址
-    int a, b;
-    cin &gt;&gt; a &gt;&gt; b; // 输入行列
-    q = fun(a, b);
-    cout &lt;&lt; **q &lt;&lt; endl;
-    return 0;
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>输入</p>
-<p>2</p>
-<p>2</p>
-<p>输出结果为</p>
-<p>5</p>
 
+在分布式环境下，由于默认的 MyBatis Cache 实现都是基于本地的，分布式环境下必然会出现读取到脏数据，需要使用集中式缓存将 MyBatis 的 Cache 接口实现，有一定的开发成本，直接使用 Redis，Memcached 等分布式缓存可能成本更低，安全性也更高。
+</select></p>
                 
             </div>
             <hr/>
@@ -641,7 +686,7 @@ int main()
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ljj218799.github.io/2023/08/30/c-ji-chu-pian/">http://ljj218799.github.io/2023/08/30/c-ji-chu-pian/</a>
+                    <a href="http://ljj218799.github.io/2023/09/10/mybatis-ji-chu-pian/">http://ljj218799.github.io/2023/09/10/mybatis-ji-chu-pian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -679,8 +724,12 @@ int main()
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C/">
-                                    <span class="chip bg-color">C++</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/MyBatis/">
+                                    <span class="chip bg-color">MyBatis</span>
                                 </a>
                             
                         </div>
@@ -1117,13 +1166,13 @@ int main()
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/08/30/c-yu-yan-jin-jie-pian/">
+                <a href="/2023/09/10/mybatis-yan-chi-jia-zai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="C语言进阶篇">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="MyBatis 延迟加载">
                         
-                        <span class="card-title">C语言进阶篇</span>
+                        <span class="card-title">MyBatis 延迟加载</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1134,71 +1183,14 @@ int main()
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-30
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-10
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    C语言
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/C%E8%AF%AD%E8%A8%80/">
-                        <span class="chip bg-color">C语言</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BB%93%E6%9E%84%E4%BD%93/">
-                        <span class="chip bg-color">结构体</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%8C%87%E9%92%88/">
-                        <span class="chip bg-color">指针</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/08/30/jvm-la-ji-hui-shou/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="JVM垃圾回收">
-                        
-                        <span class="card-title">JVM垃圾回收</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-30
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/MyBatis/" class="post-category">
+                                    MyBatis
                                 </a>
                             
                             
@@ -1212,8 +1204,65 @@ int main()
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/jvm/">
-                        <span class="chip bg-color">jvm</span>
+                    <a href="/tags/MyBatis/">
+                        <span class="chip bg-color">MyBatis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/09/07/spring-aop/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Spring AOP">
+                        
+                        <span class="card-title">Spring AOP</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                    <a href="/tags/AOP/">
+                        <span class="chip bg-color">AOP</span>
                     </a>
                     
                 </div>
